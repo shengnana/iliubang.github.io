@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[刘邦的博客]]></title>
+  <link href="http://iliubang.github.io/atom.xml" rel="self"/>
+  <link href="http://iliubang.github.io/"/>
+  <updated>2016-10-21T23:09:21+08:00</updated>
+  <id>http://iliubang.github.io/</id>
+  <author>
+    <name><![CDATA[]]></name>
+    
+  </author>
+  <generator uri="http://www.coderforart.com/">CoderForArt</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[this is my test blog]]></title>
+    <link href="http://iliubang.github.io/14770594324221.html"/>
+    <updated>2016-10-21T22:17:12+08:00</updated>
+    <id>http://iliubang.github.io/14770594324221.html</id>
+    <content type="html"><![CDATA[
+<pre><code class="language-php">class Demo 
+{
+    public function __construct()
+    {
+        echo &#39;hello world&#39;;
+    }
+}
+</code></pre>
+
+]]></content>
+  </entry>
+  
+</feed>
