@@ -4,7 +4,7 @@
   <title><![CDATA[刘邦的博客]]></title>
   <link href="http://iliubang.github.io/atom.xml" rel="self"/>
   <link href="http://iliubang.github.io/"/>
-  <updated>2016-10-22T01:19:46+08:00</updated>
+  <updated>2016-10-22T01:25:31+08:00</updated>
   <id>http://iliubang.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -32,6 +32,8 @@
 <h2 id="toc_0">test2</h2>
 
 <p>\[ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \text {，独立公式示例} \]</p>
+
+<p>\[\lambda\]</p>
 
 ]]></content>
   </entry>
