@@ -4,7 +4,7 @@
   <title><![CDATA[刘邦的博客]]></title>
   <link href="http://iliubang.github.io/atom.xml" rel="self"/>
   <link href="http://iliubang.github.io/"/>
-  <updated>2016-10-22T01:01:38+08:00</updated>
+  <updated>2016-10-22T01:05:22+08:00</updated>
   <id>http://iliubang.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -18,6 +18,8 @@
     <updated>2016-10-21T22:17:12+08:00</updated>
     <id>http://iliubang.github.io/14770594324221.html</id>
     <content type="html"><![CDATA[
+<p><img src="media/14770594324221/php.jpeg" alt="php"/></p>
+
 <pre><code class="language-php">class Demo 
 {
     public function __construct()
@@ -26,8 +28,6 @@
     }
 }
 </code></pre>
-
-<p><img src="media/14770594324221/IMG_2181.jpg" alt="IMG_2181"/></p>
 
 ]]></content>
   </entry>
