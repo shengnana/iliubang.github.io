@@ -4,7 +4,7 @@
   <title><![CDATA[刘邦的博客]]></title>
   <link href="http://iliubang.github.io/atom.xml" rel="self"/>
   <link href="http://iliubang.github.io/"/>
-  <updated>2016-10-27T23:40:11+08:00</updated>
+  <updated>2016-10-27T23:44:05+08:00</updated>
   <id>http://iliubang.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -109,8 +109,8 @@ int yywrap(void)
     fprintf(stderr, &quot;lexical error.\n&quot;);
     exit(1);
 }
-
 %%
+
 </code></pre>
 
 <p>可以看到以上的代码主要包含两部分，<code>%{</code> <code>%}</code>包含的部分和<code>%%</code> <code>%%</code>包含的部分。前一部分叫<strong>定义区块</strong>, 后者是<strong>规则区块</strong>，定义区块内的代码将会被原样输出，在定义区块中<code>#include &quot;y.tab.h&quot;</code>将会在yacc编译其规则文件后自动生成，<code>ADD</code> <code>SUB</code> <code>MUL</code> <code>DIV</code> <code>CR</code> <code>DOUBLE_LITERAL</code>等都是在y.tab.h中定义的macro。<br/>
