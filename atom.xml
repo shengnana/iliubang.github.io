@@ -4,7 +4,7 @@
   <title><![CDATA[刘邦的博客]]></title>
   <link href="http://iliubang.github.io/atom.xml" rel="self"/>
   <link href="http://iliubang.github.io/"/>
-  <updated>2016-10-27T23:44:05+08:00</updated>
+  <updated>2016-10-27T23:46:26+08:00</updated>
   <id>http://iliubang.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -300,7 +300,7 @@ clean:
 
 <h2 id="toc_6">Summary</h2>
 
-<p>本文只是初步介绍yacc/lex工具生成词法解析器和语法解析器的最基本用法，没有太多的阐述词法解析的原理和过程，所以更偏实践，再由于本人毕业一年多实在很久没写文章了，常常会提笔不知从何说起，所以写起来很慢，加之白天要工作，时间较紧，所以今天就到这里了！</p>
+<p>本文只是初步介绍yacc/lex工具生成词法解析器和语法解析器的最基本用法，没有太多的阐述词法解析的原理和过程，所以更偏实践，再由于本人毕业一年多实在很久没写文章了，常常会提笔不知从何说起，所以写起来很慢，加之白天要工作，时间较紧，所以今天就到这里了，至于理论的阐述，需要时间来慢慢酝酿😂！</p>
 
 ]]></content>
   </entry>
