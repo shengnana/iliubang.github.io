@@ -4,7 +4,7 @@
   <title><![CDATA[刘邦的博客]]></title>
   <link href="http://iliubang.github.io/atom.xml" rel="self"/>
   <link href="http://iliubang.github.io/"/>
-  <updated>2016-10-27T23:37:43+08:00</updated>
+  <updated>2016-10-27T23:40:11+08:00</updated>
   <id>http://iliubang.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -27,22 +27,16 @@
 
 <h2 id="toc_1">过程简述</h2>
 
-<p>一般来说编程语言的解释执行过程如下：<br/>
-1. 词法分析</p>
+<p>一般来说编程语言的解释执行过程如下：</p>
 
-<p>将源代码拆分成若干Token的过程</p>
+<p><strong>ONE</strong>. 词法分析<br/>
+将源代码拆分成若干Token的过程</p>
 
-<ol>
-<li>语法分析</li>
-</ol>
+<p><strong>TWO</strong>.语法分析<br/>
+将Token构建成Syntax Tree的过程</p>
 
-<p>将Token构建成Syntax Tree的过程</p>
-
-<ol>
-<li>生成执行码</li>
-</ol>
-
-<p>生成可执行文件</p>
+<p><strong>THREE</strong>.生成执行码<br/>
+生成可执行文件</p>
 
 <h2 id="toc_2">yacc（Yet Another Compiler Compiler）</h2>
 
