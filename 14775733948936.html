@@ -340,11 +340,11 @@ expression                 /* 表达式 */
 term                        /* 和项 */
     : primary_expression      /* 一元表达式 */
     | term MUL primary_expression /* 或者和项乘以一元表达式 */
-    {                          /* 匹配后执行的动作 */
+    {                          /* 匹配后执行的action */
         $$ = $1 * $3;
     }                          
     | term DIV primary_expression /* 或者和项除以一元表达式 */
-    {                             /* 匹配后执行的动作 */
+    {                             /* 匹配后执行的action */
         $$ = $1 / $3;
     }
 ;
