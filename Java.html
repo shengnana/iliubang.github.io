@@ -114,98 +114,14 @@
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">构造代码块</h2>
-
-<p>构造代码块，就是类当中直接包含的不带任何修饰的代码块。例如：</p>
-
-<pre><code class="language-java">class Foo {
+                        	构造代码块，就是类当中直接包含的不带任何修饰的代码块。例如：class Foo {
     private String name;
     {
-        System.out.println(&quot;我是构造代码块&quot;);
+        System.out.println("我是构造代码块");
     }
     Foo() {
-        System.out.println(&quot;无参构造方法&quot;);
+        System.out.println("无参构造方法");
     }
-    Foo(String name) {
-        System.out.println(&quot;有参构造方法&quot;);
-    }
-}
-
-public class Bar {
-    public static void main(String[] args) {
-        Foo f1 = new Foo();
-        Foo f2 = new Foo(&quot;liubang&quot;);
-    }
-}
-</code></pre>
-
-<p>编译执行后的结果为：</p>
-
-<pre><code>liubang@venux:~ $ java Bar
-我是构造代码块
-无参构造方法
-我是构造代码块
-有参构造方法
-</code></pre>
-
-<p>我们可以发现，无论使用哪个构造方法，都会先执行构造代码块。因此我们可以总结出以下特点：<br/>
-1. 构造代码块是被类体直接包含的；<br/>
-2. 构造代码块是随着类的实例化而执行；<br/>
-3. 构造代码块可以给所有对象初始化；<br/>
-4. 构造代码块先于构造方法执行；</p>
-
-<h2 id="toc_1">静态代码块</h2>
-
-<p>静态代码块就是被static修饰的代码块。例如：</p>
-
-<pre><code class="language-java">class Foo {
-    static {
-        System.out.println(&quot;A&quot;);
-    }
-    Foo() {
-        System.out.println(&quot;construct run&quot;);
-    }
-    static {
-        System.out.println(&quot;B&quot;);
-    }
-    
-    public static void say() {
-        System.out.println(&quot;say run&quot;);
-    }
-}
-
-public class Bar {
-    static {
-        System.out.println(&quot;C&quot;);
-    }
-    public static void main(String[] args) {
-        Foo.say();
-        Foo f1 = new Foo();
-        System.out.println(&quot;main run&quot;);
-    } 
-    static {
-        System.out.println(&quot;D&quot;);
-    }
-}
-</code></pre>
-
-<p>编译运行的结果为：</p>
-
-<pre><code>liubang@venux:~ $ java Bar
-C
-D
-A
-B
-say run
-construct run
-main run
-</code></pre>
-
-<p>从上面的结果中我们不难发现，静态代码块具有以下特点：<br/>
-1. 在类被加载的时候执行，且只执行一次；<br/>
-2. 在同一个类中按照先后顺序依次执行；<br/>
-3. 在不同类之间，按照类被加载的顺序先后执行；</p>
-
                         
                       </div>
                   </div>
