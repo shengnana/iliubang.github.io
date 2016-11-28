@@ -4,7 +4,7 @@
   <title><![CDATA[刘邦的博客]]></title>
   <link href="http://iliubang.github.io/atom.xml" rel="self"/>
   <link href="http://iliubang.github.io/"/>
-  <updated>2016-11-28T23:44:36+08:00</updated>
+  <updated>2016-11-28T23:47:27+08:00</updated>
   <id>http://iliubang.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -109,16 +109,6 @@ main run
 1. 在类被加载的时候执行，且只执行一次；<br/>
 2. 在同一个类中按照先后顺序依次执行；<br/>
 3. 在不同类之间，按照类被加载的顺序先后执行；</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[词法解析和语法解析原理分析以及纯手工实现]]></title>
-    <link href="http://iliubang.github.io/14778165360835.html"/>
-    <updated>2016-10-30T16:35:36+08:00</updated>
-    <id>http://iliubang.github.io/14778165360835.html</id>
-    <content type="html"><![CDATA[
 
 ]]></content>
   </entry>
