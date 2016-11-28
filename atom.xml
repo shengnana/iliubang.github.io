@@ -4,7 +4,7 @@
   <title><![CDATA[刘邦的博客]]></title>
   <link href="http://iliubang.github.io/atom.xml" rel="self"/>
   <link href="http://iliubang.github.io/"/>
-  <updated>2016-11-28T23:40:33+08:00</updated>
+  <updated>2016-11-28T23:44:36+08:00</updated>
   <id>http://iliubang.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -550,32 +550,6 @@ void thread2()
 <p>If you’re interested in the hardware details of how and why processors perform memory reordering, I’d recommend Appendix C of Is Parallel Programming Hard. In any case, keep in mind that memory reordering can also occur due to compiler reordering of instructions.</p>
 
 <p>In this post, I haven’t said much about the practical side of lock-free programming, such as: When do we do it? How much do we really need? I also haven’t mentioned the importance of validating your lock-free algorithms. Nonetheless, I hope for some readers, this introduction has provided a basic familiarity with lock-free concepts, so you can proceed into the additional reading without feeling too bewildered. As usual, if you spot any inaccuracies, let me know in the comments.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[this is my test blog]]></title>
-    <link href="http://iliubang.github.io/14770594324221.html"/>
-    <updated>2016-10-21T22:17:12+08:00</updated>
-    <id>http://iliubang.github.io/14770594324221.html</id>
-    <content type="html"><![CDATA[
-<p><img src="media/14770594324221/php.jpeg" alt="php"/></p>
-
-<pre><code class="language-php">class Demo 
-{
-    public function __construct()
-    {
-        echo &#39;hello world&#39;;
-    }
-}
-</code></pre>
-
-<h2 id="toc_0">test2</h2>
-
-<p>\[ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \text {，独立公式示例} \]</p>
-
-<p>\[\lambda\]</p>
 
 ]]></content>
   </entry>
