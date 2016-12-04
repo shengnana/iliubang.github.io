@@ -210,8 +210,8 @@ sudo vim elasticsearch.yml
 # 修改一下配置项
 cluster.name: linger #集群名，三个节点使用同一个集群名
 node.name: vm-911 #节点名
-path.data: /data/elasticsearch #数据存储目录
-path.logs: /data/logs/elasticsearch #日志存储目录
+path.data: /data/elasticsearch #数据存储目录，要有读写权限
+path.logs: /data/logs/elasticsearch #日志存储目录，要有读写权限
 bootstrap.memory_lock: false #启动时是否锁定内存
 network.host: 192.168.9.11 #绑定ip,其他节点根据实际情况指定
 http.port: 9200 #端口
