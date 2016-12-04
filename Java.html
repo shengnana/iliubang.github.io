@@ -150,10 +150,19 @@ sudo curl -L &quot;http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u1
 sudo tar -zxvf jdk-8u112-linux-x64.tar.gz
 sudo mv jdk-8u112 java
 #添加环境变量
-echo &#39;export JAVA_HOME=/opt/app/java&#39; &gt;&gt; ~/.bashrc
-echo &#39;export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar&#39; &gt;&gt; ~/.bashrc
-echo &#39;export PATH=$JAVA_HOME/bin:$GOPATH/bin:$PATH&#39; &gt;&gt; ~/.bashrc
+sudo echo &#39;export JAVA_HOME=/opt/app/java&#39; &gt;&gt; /etc/bashrc
+sudo echo &#39;export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar&#39; &gt;&gt; /etc/bashrc
+sudo echo &#39;export PATH=$JAVA_HOME/bin:$GOPATH/bin:$PATH&#39; &gt;&gt; /etc/bashrc
 source ~/.bashrc
+</code></pre>
+
+<p><strong>注意</strong><br/>
+1. 设置环境变量的时候使用<code>/etc/bashrc</code>文件，而没有使用<code>~/.bashrc</code>，是因为后期很多操作需要使用<code>sudo</code>，如果放在私有配置文件中，那么还需要给root用户也配置一套环境变量，所以为了避免重复，使用了全局配置.<br/>
+2. 在用户<code>~/.bashrc</code>文件中加入以下代码</p>
+
+<pre><code class="language-bash">if [ -f /etc/bashrc ] ; then
+   . /etc/bashrc
+fi
 </code></pre>
 
 <p>(2). 下载并安装elasticsearch</p>
