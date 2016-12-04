@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  this is my test blog - 刘邦的博客
+  Elasticsearch 集群搭建 - 刘邦的博客
   
   </title>
-  
-  
+  <meta name="keywords" content="elasticsearch, 集群" />
+  <meta name="description" content="简单介绍搭建一个三个服务器节点的elasticsearch集群" />
   <link href="atom.xml" rel="alternate" title="刘邦的博客" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
@@ -78,8 +78,6 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="PHP.html">PHP</a></li>
-        
             <li><a href="OS.html">OS</a></li>
         
             <li><a href="C.html">C</a></li>
@@ -107,14 +105,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>this is my test blog</h1>
+          <h1>Elasticsearch 集群搭建</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2016/10/21 22:17 下午</span>
+          <span class="date">2016/12/4 16:21 下午</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='PHP.html'>PHP</a></span>
+              <span class="posted-in"><a href='Java.html'>Java</a></span>
            
          
           <span class="comments">
@@ -127,22 +125,127 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p><img src="media/14770594324221/php.jpeg" alt="php"/></p>
+      <h2 id="toc_0">1. 服务器节点和所需软件准备</h2>
 
-<pre><code class="language-php">class Demo 
-{
-    public function __construct()
-    {
-        echo &#39;hello world&#39;;
-    }
-}
+<p><strong>服务器</strong></p>
+
+<ul>
+<li>vm-911(debian8, 192.168.9.11)</li>
+<li>vm-912(debian8, 192.168.9.12)</li>
+<li>vm-913(debian8, 192.168.9.13)</li>
+</ul>
+
+<p><strong>软件</strong></p>
+
+<ul>
+<li><a href="http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz">jdk-8u112-linux-x64.tar.gz</a></li>
+<li><a href="https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.2/elasticsearch-2.4.2.tar.gz">elasticsearch-2.4.2.tar.gz</a></li>
+<li><a href="https://download.elastic.co/kibana/kibana/kibana-4.6.1-linux-x86_64.tar.gz">kibana-4.6.1</a></li>
+</ul>
+
+<h2 id="toc_1">2.开始安装</h2>
+
+<p><strong>注意：</strong> 安装前请确保系统能够支持https，如果不支持，需要进行一下操作</p>
+
+<pre><code class="language-bash">sudo apt-get update
+sudo apt-get install apt-transport-https ca-certificates
 </code></pre>
 
-<h2 id="toc_0">test2</h2>
+<p>(1). 配置jdk</p>
 
-<p>\[ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \text {，独立公式示例} \]</p>
+<p>首先要在每个节点上配置好jdk的环境，各个节点配置方法相同</p>
 
-<p>\[\lambda\]</p>
+<pre><code class="language-bash">#进入软件安装目录s
+cd /opt/app
+#下载jdk
+sudo curl -L &quot;http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz&quot; -H &quot;Cookie: oraclelicense=accept-securebackup-cookie&quot;  -H &quot;Connection: keep-alive&quot; -O  
+#解压
+sudo tar -zxvf jdk-8u112-linux-x64.tar.gz
+sudo mv jdk-8u112 java
+#添加环境变量
+sudo echo &#39;export JAVA_HOME=/opt/app/java&#39; &gt;&gt; /etc/bashrc
+sudo echo &#39;export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar&#39; &gt;&gt; /etc/bashrc
+sudo echo &#39;export PATH=$JAVA_HOME/bin:$GOPATH/bin:$PATH&#39; &gt;&gt; /etc/bashrc
+source ~/.bashrc
+</code></pre>
+
+<p><strong>注意</strong><br/>
+1. 设置环境变量的时候使用<code>/etc/bashrc</code>文件，而没有使用<code>~/.bashrc</code>，是因为后期很多操作需要使用<code>sudo</code>，如果放在私有配置文件中，那么还需要给root用户也配置一套环境变量，所以为了避免重复，使用了全局配置.<br/>
+2. 在用户<code>~/.bashrc</code>文件中加入以下代码</p>
+
+<pre><code class="language-bash">if [ -f /etc/bashrc ] ; then
+   . /etc/bashrc
+fi
+</code></pre>
+
+<p>(2). 下载并安装elasticsearch</p>
+
+<pre><code class="language-bash">cd /opt/app
+sudo wget https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.2/elasticsearch-2.4.2.tar.gz
+sudo tar -zxvf elasticsearch-2.4.2.tar.gz
+# 安装Marvel Agent
+cd elasticsearch-2.4.2
+sudo bin/plugin install license
+sudo bin/plugin install marvel-agent
+</code></pre>
+
+<p>(3). 下载并安装kibana</p>
+
+<pre><code class="language-bash">cd /opt/app
+sudo wget https://download.elastic.co/kibana/kibana/kibana-4.6.1-linux-x86_64.tar.gz
+sudo tar -zxvf kibana-4.6.1-linux-x86_64.tar.gz
+#安装marvel插件
+cd kibana-4.6.1
+bin/kibana plugin --install elasticsearch/marvel
+#安装sense插件
+bin/kibana plugin --install elastic/sense
+</code></pre>
+
+<h2 id="toc_2">3. 配置并运行</h2>
+
+<p>首先对elasticsearch进行配置，这里只拿vm-911这个节点说明，其他节点类似</p>
+
+<pre><code class="language-bash">cd /opt/app/elasticsearch-2.4.2/config/
+sudo vim elasticsearch.yml
+# 修改一下配置项
+cluster.name: linger #集群名，三个节点使用同一个集群名
+node.name: vm-911 #节点名
+path.data: /data/elasticsearch #数据存储目录，要有读写权限
+path.logs: /data/logs/elasticsearch #日志存储目录，要有读写权限
+bootstrap.memory_lock: false #启动时是否锁定内存
+network.host: 192.168.9.11 #绑定ip,其他节点根据实际情况指定
+http.port: 9200 #端口
+discovery.zen.ping.unicast.hosts: [&quot;vm-911&quot;, &quot;vm-912&quot;, &quot;vm-913&quot;] #单播配置,节点向指定主机发送单播请求
+</code></pre>
+
+<p>配置kibana</p>
+
+<pre><code class="language-bash">cd /opt/app/kibana-4.6.1/config
+sudo vim kibana.yml 
+server.port: 5601 #web服务端口
+server.host: &quot;0.0.0.0&quot;#web服务host
+elasticsearch.url: &quot;http://192.168.9.11:9200&quot; #es服务的http url
+</code></pre>
+
+<h2 id="toc_3">启动服务</h2>
+
+<p>启动elasticsearch</p>
+
+<pre><code class="language-bash"># vm-911
+cd /opt/app/elasticsearch-2.4.2/
+sudo ./bin/elasticsearch -d # -d表示以守护进程的方式运行
+cd /opt/app/kibana-4.6.1/
+sudo ./bin/kibana
+# 分别在vm-912, vm-913上启动elasticsearch ......
+</code></pre>
+
+<p>Open your browser and enter <a href="http://192.168.9.11:5601">http://192.168.9.11:5601</a> </p>
+
+<p><img src="media/14808396945913/14808445404189.jpg" alt=""/></p>
+
+<p><img src="media/14808396945913/14808451696419.jpg" alt=""/></p>
+
+<p><img src="media/14808396945913/14808445823838.jpg" alt=""/></p>
 
 
     
@@ -153,13 +256,13 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="14771244487868.html" 
-          title="Previous Post: An Introduction to Lock-Free Programming">&laquo; An Introduction to Lock-Free Programming</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="14803466591982.html" 
+          title="Next Post: Java中的构造代码块和静态代码块">Java中的构造代码块和静态代码块 &raquo;</a>
       
       </p>
         </div>
@@ -234,8 +337,6 @@ var duoshuoQuery = {short_name:"iliubang"};
 
       	<p class="cat-list">
         
-            <a href="PHP.html"><strong>PHP</strong></a>
-        
             <a href="OS.html"><strong>OS</strong></a>
         
             <a href="C.html"><strong>C</strong></a>
@@ -257,13 +358,13 @@ var duoshuoQuery = {short_name:"iliubang"};
 	      
 		      
 			      <li class="post">
-			        <a href="14803466591982.html">Java中的构造代码块和静态代码块</a>
+			        <a href="14808396945913.html">Elasticsearch 集群搭建</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="14778165360835.html">词法解析和语法解析原理分析以及纯手工实现</a>
+			        <a href="14803466591982.html">Java中的构造代码块和静态代码块</a>
 			      </li>
 		     
 		  
@@ -276,12 +377,6 @@ var duoshuoQuery = {short_name:"iliubang"};
 		      
 			      <li class="post">
 			        <a href="14771244487868.html">An Introduction to Lock-Free Programming</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="14770594324221.html">this is my test blog</a>
 			      </li>
 		     
 		   

@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  刘邦的博客
+  Java中的构造代码块和静态代码块 - 刘邦的博客
   
   </title>
-  <meta name="keywords" content="liubang,blog,lock-free,programing" />
-  
+  <meta name="keywords" content="java,构造代码块,静态代码块" />
+  <meta name="description" content="简单介绍构造代码块和静态代码块的写法和特点" />
   <link href="atom.xml" rel="alternate" title="刘邦的博客" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
@@ -96,181 +96,183 @@
        
 
  <script type="text/javascript">
-	$(function(){
-		$('#menu_item_index').addClass('is_active');
-	});
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
 </script>
 <div class="row">
-	<div class="large-8 medium-8 columns">
-		<div class="markdown-body home-categories">
-		
-			<div class="article">
-                <a class="clearlink" href="14808396945913.html">
-                
-                  <h1>Elasticsearch 集群搭建</h1>
-                  <div class="a-content">
-                      
-		                  <div class="a-content-img">
-                      		<img src="media/14808396945913/14808451696419.jpg" />
-                      	  </div>
-		              
-                      <div class="a-content-text">
-                        
-                        	## 1. 服务器节点和所需软件准备
-**服务器**
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>Java中的构造代码块和静态代码块</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2016/11/28 23:24 下午</span>
 
-- vm-911(debian8, 192.168.9.11)
-- vm-912(debian8, 192.168.9.12)
-- vm-913(debian8, 192.168.9.13)
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Java.html'>Java</a></span>
+           
+         
+          <span class="comments">
+            
 
-**软件**
+            
+          </span>
 
-- [jdk-8u112-linux-x64.tar.gz](http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz)
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/12/4 16:21 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+        </div>
+      </div><!-- article -->
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="14803466591982.html">
-                
-                  <h1>Java中的构造代码块和静态代码块</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	构造代码块，就是类当中直接包含的不带任何修饰的代码块。例如：class Foo {
+      <div class="article-content">
+      <h2 id="toc_0">构造代码块</h2>
+
+<p>构造代码块，就是类当中直接包含的不带任何修饰的代码块。例如：</p>
+
+<pre><code class="language-java">class Foo {
     private String name;
     {
-        System.out.println("我是构造代码块");
+        System.out.println(&quot;我是构造代码块&quot;);
     }
     Foo() {
-        System.out.println("无参构造方法");
+        System.out.println(&quot;无参构造方法&quot;);
     }
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/11/28 23:24 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+    Foo(String name) {
+        System.out.println(&quot;有参构造方法&quot;);
+    }
+}
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="14775733948936.html">
-                
-                  <h1>基于C语言的编程语言开发 -- yacc/lex初步</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	当今世道，各种高级语言百花齐放。然而会有人发出这样的疑问--计算机真的能够识别这么多语言吗？稍微有点文化的人都知道，这显然是不可能滴！在计算机的世界里，他们能够直接识别的只有机器语言。然而，由于机器语言对人类不够友好，所以人们才发明了汇编，c，Java...许许多多的人类易读的编程语言，所以我个人对编程语言的理解一直是其实他们就是机器语言的语法糖，而编程语言的创造过程，就是定义一种合理的，没有二义性的语法规则，然后就是通过直接或间接的方式实现该语法到机器语言的转换过程。既然是这样的话，那么我们就很容易想到，计算机语言是一个自我完善的过程：首先我们定了一种非常简单的x1(这里只是用来举例说明，有没有x语言有待考证)语言，然后用机器语言实现了这个非常简单的x1语言的编译器，创造了x1语言，实现了非常简单的新特性，然后我们再用x1语言(相对于机器语言较高级)实现了另一些新的特性的x2语言的编译器，创造了x2语言……
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/10/27 21:3 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='C.html'>C</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+public class Bar {
+    public static void main(String[] args) {
+        Foo f1 = new Foo();
+        Foo f2 = new Foo(&quot;liubang&quot;);
+    }
+}
+</code></pre>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="14771244487868.html">
-                
-                  <h1>An Introduction to Lock-Free Programming</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	Lock-free programming is a challenge, not just because of the complexity of the task itself, but because of how difficult it can be to penetrate the subject in the first place.
+<p>编译执行后的结果为：</p>
 
-I was fortunate in that my first introduction to lock-free (also known as lockless) programming was Bruce Dawson’s excellent and comprehensive white paper, Lockless Programming Considerations. And like many, I’ve had the occasion to put Bruce’s advice into practice developing and debugging lock-free code on platforms such as the Xbox 360.
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/10/22 16:20 下午</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='OS.html'>OS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<pre><code>liubang@venux:~ $ java Bar
+我是构造代码块
+无参构造方法
+我是构造代码块
+有参构造方法
+</code></pre>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-              
+<p>我们可以发现，无论使用哪个构造方法，都会先执行构造代码块。因此我们可以总结出以下特点：<br/>
+1. 构造代码块是被类体直接包含的；<br/>
+2. 构造代码块是随着类的实例化而执行；<br/>
+3. 构造代码块可以给所有对象初始化；<br/>
+4. 构造代码块先于构造方法执行；</p>
+
+<h2 id="toc_1">静态代码块</h2>
+
+<p>静态代码块就是被static修饰的代码块。例如：</p>
+
+<pre><code class="language-java">class Foo {
+    static {
+        System.out.println(&quot;A&quot;);
+    }
+    Foo() {
+        System.out.println(&quot;construct run&quot;);
+    }
+    static {
+        System.out.println(&quot;B&quot;);
+    }
+    
+    public static void say() {
+        System.out.println(&quot;say run&quot;);
+    }
+}
+
+public class Bar {
+    static {
+        System.out.println(&quot;C&quot;);
+    }
+    public static void main(String[] args) {
+        Foo.say();
+        Foo f1 = new Foo();
+        System.out.println(&quot;main run&quot;);
+    } 
+    static {
+        System.out.println(&quot;D&quot;);
+    }
+}
+</code></pre>
+
+<p>编译运行的结果为：</p>
+
+<pre><code>liubang@venux:~ $ java Bar
+C
+D
+A
+B
+say run
+construct run
+main run
+</code></pre>
+
+<p>从上面的结果中我们不难发现，静态代码块具有以下特点：<br/>
+1. 在类被加载的时候执行，且只执行一次；<br/>
+2. 在同一个类中按照先后顺序依次执行；<br/>
+3. 在不同类之间，按照类被加载的顺序先后执行；</p>
 
 
-			<div class="row">
-			  <div class="large-6 columns">
-			  <p class="text-left" style="padding-top:25px;">
-			   
-			  </p>
-			  </div>
-			  <div class="large-6 columns">
-			<p class="text-right" style="padding-top:25px;">
-			
-			</p>
-			  </div>
-			</div>
-		</div>
-	</div><!-- large 8 -->
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="14808396945913.html" 
+          title="Previous Post: Elasticsearch 集群搭建">&laquo; Elasticsearch 集群搭建</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="14775733948936.html" 
+          title="Next Post: 基于C语言的编程语言开发 -- yacc/lex初步">基于C语言的编程语言开发 -- yacc/lex初步 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{"tqq":"sdsf","t163":"fdsg","tsohu":"gda"},"bdText":"gdg","bdMini":"2","bdMiniList":false,"bdPic":"dga","bdStyle":"1","bdSize":"32"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="" data-url=""></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"iliubang"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+<!-- 多说公共JS代码 end -->
+
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
 
  <div class="large-4 medium-4 columns">
   <div class="hide-for-small">
