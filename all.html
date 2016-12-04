@@ -105,6 +105,148 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="14808396945913.html">
+                
+                  <h1>Elasticsearch 集群搭建</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1. 服务器节点和所需软件准备</h2>
+
+<p><strong>服务器</strong></p>
+
+<ul>
+<li>vm-911(debian8, 192.168.9.11)</li>
+<li>vm-912(debian8, 192.168.9.12)</li>
+<li>vm-913(debian8, 192.168.9.13)</li>
+</ul>
+
+<p><strong>软件</strong></p>
+
+<ul>
+<li><a href="http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz">jdk-8u112-linux-x64.tar.gz</a></li>
+<li><a href="https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.2/elasticsearch-2.4.2.tar.gz">elasticsearch-2.4.2.tar.gz</a></li>
+<li><a href="https://download.elastic.co/kibana/kibana/kibana-4.6.1-linux-x86_64.tar.gz">kibana-4.6.1</a></li>
+</ul>
+
+<h2 id="toc_1">2.开始安装</h2>
+
+<p><strong>注意：</strong> 安装前请确保系统能够支持https，如果不支持，需要进行一下操作</p>
+
+<pre><code class="language-bash">sudo apt-get update
+sudo apt-get install apt-transport-https ca-certificates
+</code></pre>
+
+<p>(1). 配置jdk</p>
+
+<p>首先要在每个节点上配置好jdk的环境，各个节点配置方法相同</p>
+
+<pre><code class="language-bash">#进入软件安装目录s
+cd /opt/app
+#下载jdk
+sudo curl -L &quot;http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz&quot; -H &quot;Cookie: oraclelicense=accept-securebackup-cookie&quot;  -H &quot;Connection: keep-alive&quot; -O  
+#解压
+sudo tar -zxvf jdk-8u112-linux-x64.tar.gz
+sudo mv jdk-8u112 java
+#添加环境变量
+echo &#39;export JAVA_HOME=/opt/app/java&#39; &gt;&gt; ~/.bashrc
+echo &#39;export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar&#39; &gt;&gt; ~/.bashrc
+echo &#39;export PATH=$JAVA_HOME/bin:$GOPATH/bin:$PATH&#39; &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+
+<p>(2). 下载并安装elasticsearch</p>
+
+<pre><code class="language-bash">cd /opt/app
+sudo wget https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.2/elasticsearch-2.4.2.tar.gz
+sudo tar -zxvf elasticsearch-2.4.2.tar.gz
+# 安装Marvel Agent
+cd elasticsearch-2.4.2
+sudo bin/plugin install license
+sudo bin/plugin install marvel-agent
+</code></pre>
+
+<p>(3). 下载并安装kibana</p>
+
+<pre><code class="language-bash">cd /opt/app
+sudo wget https://download.elastic.co/kibana/kibana/kibana-4.6.1-linux-x86_64.tar.gz
+sudo tar -zxvf kibana-4.6.1-linux-x86_64.tar.gz
+#安装marvel插件
+cd kibana-4.6.1
+bin/kibana plugin --install elasticsearch/marvel
+#安装sense插件
+bin/kibana plugin --install elastic/sense
+</code></pre>
+
+<h2 id="toc_2">3. 配置并运行</h2>
+
+<p>首先对elasticsearch进行配置，这里只拿vm-911这个节点说明，其他节点类似</p>
+
+<pre><code class="language-bash">cd /opt/app/elasticsearch-2.4.2/config/
+sudo vim elasticsearch.yml
+# 修改一下配置项
+cluster.name: linger #集群名，三个节点使用同一个集群名
+node.name: vm-911 #节点名
+path.data: /data/elasticsearch #数据存储目录
+path.logs: /data/logs/elasticsearch #日志存储目录
+bootstrap.memory_lock: false #启动时是否锁定内存
+network.host: 192.168.9.11 #绑定ip,其他节点根据实际情况指定
+http.port: 9200 #端口
+discovery.zen.ping.unicast.hosts: [&quot;vm-911&quot;, &quot;vm-912&quot;, &quot;vm-913&quot;] #单播配置,节点向指定主机发送单播请求
+</code></pre>
+
+<p>配置kibana</p>
+
+<pre><code class="language-bash">cd /opt/app/kibana-4.6.1/config
+sudo vim kibana.yml 
+server.port: 5601 #web服务端口
+server.host: &quot;0.0.0.0&quot;#web服务host
+elasticsearch.url: &quot;http://192.168.9.11:9200&quot; #es服务的http url
+</code></pre>
+
+<h2 id="toc_3">启动服务</h2>
+
+<p>启动elasticsearch</p>
+
+<pre><code class="language-bash"># vm-911
+cd /opt/app/elasticsearch-2.4.2/
+sudo ./bin/elasticsearch -d # -d表示以守护进程的方式运行
+cd /opt/app/kibana-4.6.1/
+sudo ./bin/kibana
+# 分别在vm-912, vm-913上启动elasticsearch ......
+</code></pre>
+
+<p>Open your browser and enter <a href="http://192.168.9.11:5601">http://192.168.9.11:5601</a> </p>
+
+<p><img src="media/14808396945913/14808445404189.jpg" alt=""/></p>
+
+<p><img src="media/14808396945913/14808445823838.jpg" alt=""/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/12/4 16:21 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="14803466591982.html">
                 
                   <h1>Java中的构造代码块和静态代码块</h1>
@@ -282,6 +424,12 @@ I was fortunate in that my first introduction to lock-free (also known as lockle
                 <div class="side-content">
                 <ul class="posts-list">
 	      
+		      
+			      <li class="post">
+			        <a href="14808396945913.html">Elasticsearch 集群搭建</a>
+			      </li>
+		     
+		  
 		      
 			      <li class="post">
 			        <a href="14803466591982.html">Java中的构造代码块和静态代码块</a>
