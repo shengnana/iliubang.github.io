@@ -4,7 +4,7 @@
   <title><![CDATA[刘邦的博客]]></title>
   <link href="http://iliubang.github.io/atom.xml" rel="self"/>
   <link href="http://iliubang.github.io/"/>
-  <updated>2016-12-04T17:53:59+08:00</updated>
+  <updated>2016-12-04T19:13:46+08:00</updated>
   <id>http://iliubang.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -32,8 +32,10 @@
 
 <ul>
 <li><a href="http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz">jdk-8u112-linux-x64.tar.gz</a></li>
-<li><a href="https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.2/elasticsearch-2.4.2.tar.gz">elasticsearch-2.4.2.tar.gz</a></li>
+<li><a href="http://apache.fayea.com/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz">maven</a></li>
+<li><a href="https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.1/elasticsearch-2.4.1.tar.gz">elasticsearch-2.4.1.tar.gz</a></li>
 <li><a href="https://download.elastic.co/kibana/kibana/kibana-4.6.1-linux-x86_64.tar.gz">kibana-4.6.1</a></li>
+<li><a href="https://github.com/medcl/elasticsearch-analysis-ik">elasticsearch-analysis-ik tag:1.10.1</a></li>
 </ul>
 
 <h2 id="toc_1">2.开始安装</h2>
@@ -71,7 +73,16 @@ source ~/.bashrc
 fi
 </code></pre>
 
-<p>(2). 下载并安装elasticsearch</p>
+<p>(2). 配置maven</p>
+
+<pre><code class="language-bash">cd /opt/app
+sudo wget http://apache.fayea.com/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+sudo tar -zxvf apache-maven-3.3.9-bin.tar.gz
+sudo echo &#39;export MAVEN_HOME=/opt/app/maven&#39; &gt;&gt; /etc/bashrc
+sudo echo &#39;export PATH=$MAVEN_HOME/bin:$PATH&#39; &gt;&gt; /etc/bashrc
+</code></pre>
+
+<p>(3). 下载并安装elasticsearch</p>
 
 <pre><code class="language-bash">cd /opt/app
 sudo wget https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.2/elasticsearch-2.4.2.tar.gz
@@ -82,7 +93,19 @@ sudo bin/plugin install license
 sudo bin/plugin install marvel-agent
 </code></pre>
 
-<p>(3). 下载并安装kibana</p>
+<p>(4). 下载并安装中文分词插件</p>
+
+<pre><code class="language-bash">git clone https://github.com/medcl/elasticsearch-analysis-ik.git
+git checkout v1.10.1
+cd elasticsearch-analysis-ik
+mvn clean
+mvn compile
+mvn package
+</code></pre>
+
+<p>拷贝和解压release下的文件: <code>#{project_path}/elasticsearch-analysis-ik/target/releases/elasticsearch-analysis-ik-*.zip</code> 到你的 elasticsearch 插件目录, 如: <code>plugins/ik</code> 重启elasticsearch</p>
+
+<p>(5). 下载并安装kibana</p>
 
 <pre><code class="language-bash">cd /opt/app
 sudo wget https://download.elastic.co/kibana/kibana/kibana-4.6.1-linux-x86_64.tar.gz
@@ -103,8 +126,8 @@ sudo vim elasticsearch.yml
 # 修改一下配置项
 cluster.name: linger #集群名，三个节点使用同一个集群名
 node.name: vm-911 #节点名
-path.data: /data/elasticsearch #数据存储目录
-path.logs: /data/logs/elasticsearch #日志存储目录
+path.data: /data/elasticsearch #数据存储目录，要有读写权限
+path.logs: /data/logs/elasticsearch #日志存储目录，要有读写权限
 bootstrap.memory_lock: false #启动时是否锁定内存
 network.host: 192.168.9.11 #绑定ip,其他节点根据实际情况指定
 http.port: 9200 #端口
