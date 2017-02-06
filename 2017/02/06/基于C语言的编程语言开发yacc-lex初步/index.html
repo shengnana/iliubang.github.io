@@ -1,12 +1,242 @@
-<?xml version="1.0" encoding="utf-8"?>
-<search>
-  
-  
+<!DOCTYPE html>
+<html lang="">
+  <head>
     
-    <entry>
-      <title><![CDATA[基于C语言的编程语言开发yacc_lex初步]]></title>
-      <url>http://iliubang.github.io/2017/02/06/%E5%9F%BA%E4%BA%8EC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%BC%80%E5%8F%91yacc-lex%E5%88%9D%E6%AD%A5/</url>
-      <content type="html"><![CDATA[<h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>当今世道，各种高级语言百花齐放。然而会有人发出这样的疑问–计算机真的能够识别这么多语言吗？稍微有点常识的人都知道，这显然是不可能滴！在计算机的世界里，他们能够直接识别的只有机器语言。然而，由于机器语言对人类不够友好，所以人们才发明了汇编，c，Java…许许多多的人类易读的编程语言，所以我个人对编程语言的理解一直是其实他们就是机器语言的语法糖，而编程语言的创造过程，就是定义一种合理的，没有二义性的语法规则，然后就是通过直接或间接的方式实现该语法到机器语言的转换过程。既然是这样的话，那么我们就很容易想到，计算机语言是一个自我完善的过程：首先我们定了一种非常简单的x1(这里只是用来举例说明，有没有x语言有待考证)语言，然后用机器语言实现了这个非常简单的x1语言的编译器，创造了x1语言，实现了非常简单的新特性，然后我们再用x1语言(相对于机器语言较高级)实现了另一些新的特性的x2语言的编译器，创造了x2语言，…，如此下去，人们创造了汇编语言，从而创造了c语言，接着创造了世界上最好的语言PHP(不知道是不是真的，反正大家都习惯这么说)。<br>在各种高级语言越来越强大的今天，我们可能很难再会去接触最原始的东西，高度封装确实提高了生产力，降低了学习成本，但是也使得现代程序员将太多精力花在了各种说明书上，而不清楚其本质。<br>毕业一年多，工作了一年多，对于计算机编程有了自己的看法，不再像在大学的时候认识的那样肤浅，反而觉得大学中学习的知识才是真正的干货，不禁感叹曾经浪费掉了大好光阴。好在陶渊明有词云：“悟已往之不谏，知来者之可追”。<br>闲暇之余，扒开PHP(这里之所以是PHP并不因为他是世界上最好的语言，只是因为我目前从事的是PHP开发的工作而已)源码，了解了其内部构造和实现原理，百看不一练。今天就初步学习yacc/lex了，记录在我的博客中，以便以后翻阅巩固。</p>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="基于C语言的编程语言开发yacc_lex初步"/>
+
+
+
+
+  <meta name="keywords" content="compiler,yacc,lex," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangLau">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.2.x" />
+
+
+
+<link rel="canonical" href="http://iliubang.github.io/2017/02/06/基于C语言的编程语言开发yacc-lex初步/"/>
+
+
+<meta name="description" content="Preface当今世道，各种高级语言百花齐放。然而会有人发出这样的疑问–计算机真的能够识别这么多语言吗？稍微有点常识的人都知道，这显然是不可能滴！在计算机的世界里，他们能够直接识别的只有机器语言。然而，由于机器语言对人类不够友好，所以人们才发明了汇编，c，Java…许许多多的人类易读的编程语言，所以我个人对编程语言的理解一直是其实他们就是机器语言的语法糖，而编程语言的创造过程，就是定义一种合理的，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于C语言的编程语言开发yacc_lex初步">
+<meta property="og:url" content="http://iliubang.github.io/2017/02/06/基于C语言的编程语言开发yacc-lex初步/index.html">
+<meta property="og:site_name" content="BangLau">
+<meta property="og:description" content="Preface当今世道，各种高级语言百花齐放。然而会有人发出这样的疑问–计算机真的能够识别这么多语言吗？稍微有点常识的人都知道，这显然是不可能滴！在计算机的世界里，他们能够直接识别的只有机器语言。然而，由于机器语言对人类不够友好，所以人们才发明了汇编，c，Java…许许多多的人类易读的编程语言，所以我个人对编程语言的理解一直是其实他们就是机器语言的语法糖，而编程语言的创造过程，就是定义一种合理的，">
+<meta property="og:updated_time" content="2017-02-06T12:59:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于C语言的编程语言开发yacc_lex初步">
+<meta name="twitter:description" content="Preface当今世道，各种高级语言百花齐放。然而会有人发出这样的疑问–计算机真的能够识别这么多语言吗？稍微有点常识的人都知道，这显然是不可能滴！在计算机的世界里，他们能够直接识别的只有机器语言。然而，由于机器语言对人类不够友好，所以人们才发明了汇编，c，Java…许许多多的人类易读的编程语言，所以我个人对编程语言的理解一直是其实他们就是机器语言的语法糖，而编程语言的创造过程，就是定义一种合理的，">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.2.x" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    search: {
+      enable: true,
+      path: "/search.xml",
+    },
+    navbar: {
+      enable: true
+    },
+    fancybox: {
+      enable: true
+    },
+    toc: {
+      enable: true
+    },
+  };
+</script>
+
+
+
+  
+
+
+
+    <title> 基于C语言的编程语言开发yacc_lex初步 · BangLau </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">BangLau</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              Categories
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              Tags
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              About
+            
+          </a>
+        </li>
+      
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">BangLau</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      <a class="mobile-menu-item" href="/">
+        
+        
+          Home
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/archives/">
+        
+        
+          Archives
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/categories">
+        
+        
+          Categories
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/tags">
+        
+        
+          Tags
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/about">
+        
+        
+          About
+        
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          基于C语言的编程语言开发yacc_lex初步
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          Feb 6, 2017
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Preface"><span class="toc-text">Preface</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#过程简述"><span class="toc-text">过程简述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yacc（Yet-Another-Compiler-Compiler）"><span class="toc-text">yacc（Yet Another Compiler Compiler）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#lex-flex"><span class="toc-text">lex/flex</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#practice"><span class="toc-text">practice</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附加"><span class="toc-text">附加</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Summary"><span class="toc-text">Summary</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>当今世道，各种高级语言百花齐放。然而会有人发出这样的疑问–计算机真的能够识别这么多语言吗？稍微有点常识的人都知道，这显然是不可能滴！在计算机的世界里，他们能够直接识别的只有机器语言。然而，由于机器语言对人类不够友好，所以人们才发明了汇编，c，Java…许许多多的人类易读的编程语言，所以我个人对编程语言的理解一直是其实他们就是机器语言的语法糖，而编程语言的创造过程，就是定义一种合理的，没有二义性的语法规则，然后就是通过直接或间接的方式实现该语法到机器语言的转换过程。既然是这样的话，那么我们就很容易想到，计算机语言是一个自我完善的过程：首先我们定了一种非常简单的x1(这里只是用来举例说明，有没有x语言有待考证)语言，然后用机器语言实现了这个非常简单的x1语言的编译器，创造了x1语言，实现了非常简单的新特性，然后我们再用x1语言(相对于机器语言较高级)实现了另一些新的特性的x2语言的编译器，创造了x2语言，…，如此下去，人们创造了汇编语言，从而创造了c语言，接着创造了世界上最好的语言PHP(不知道是不是真的，反正大家都习惯这么说)。<br>在各种高级语言越来越强大的今天，我们可能很难再会去接触最原始的东西，高度封装确实提高了生产力，降低了学习成本，但是也使得现代程序员将太多精力花在了各种说明书上，而不清楚其本质。<br>毕业一年多，工作了一年多，对于计算机编程有了自己的看法，不再像在大学的时候认识的那样肤浅，反而觉得大学中学习的知识才是真正的干货，不禁感叹曾经浪费掉了大好光阴。好在陶渊明有词云：“悟已往之不谏，知来者之可追”。<br>闲暇之余，扒开PHP(这里之所以是PHP并不因为他是世界上最好的语言，只是因为我目前从事的是PHP开发的工作而已)源码，了解了其内部构造和实现原理，百看不一练。今天就初步学习yacc/lex了，记录在我的博客中，以便以后翻阅巩固。</p>
 <h1 id="过程简述"><a href="#过程简述" class="headerlink" title="过程简述"></a>过程简述</h1><p>一般来说编程语言的解释执行过程如下：</p>
 <p><strong>ONE</strong>. 词法分析<br>将源代码拆分成若干Token的过程</p>
 <p><strong>TWO</strong>.语法分析<br>将Token构建成Syntax Tree的过程</p>
@@ -39,34 +269,195 @@
 <p>只需要执行<code>make run</code>命令即可运行！</p>
 <h1 id="附加"><a href="#附加" class="headerlink" title="附加"></a>附加</h1><p>可能有人会疑惑，这玩意学着有什么用，那么有兴趣的你可以下载一份PHP的源代码，在Zend(Zend引擎核心文件)目录中你不难找到<code>zend_language_scanner.l</code>,<code>zend_ini_scanner.l</code>,<code>zend_ini_parser.y</code>,<code>zend_language_parser.y</code>这几个文件，打开其内容，是不是不再那么恐惧和陌生了呢。</p>
 <h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>本文只是初步介绍yacc/lex工具生成词法解析器和语法解析器的最基本用法，没有太多的阐述词法解析的原理和过程，所以更偏实践，再由于本人毕业一年多实在很久没写文章了，常常会提笔不知从何说起，所以写起来很慢，加之白天要工作，时间较紧，所以今天就到这里了，至于理论的阐述，需要时间来慢慢酝酿😂！</p>
-]]></content>
-    </entry>
+
+      
+    </div>
+
     
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>http://iliubang.github.io/2017/02/06/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    </entry>
+      
+      
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/image/reward/wechat.png" title="wechat">
+        </label>
+      
+      
+    </div>
+  </div>
+
     
-    <entry>
-      <title><![CDATA[Demo]]></title>
-      <url>http://iliubang.github.io/2017/02/06/Demo/</url>
-      <content type="html"><![CDATA[<p>this is my demo document.</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">foo</span></div><div class="line"></div><div class="line"><span class="title">class</span> <span class="title">App</span> &#123;</div><div class="line">    </div><div class="line">    <span class="title">private</span> <span class="title">static</span> $<span class="title">instance</span> = <span class="title">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">    &#125;    </div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!<span class="keyword">self</span>::$instance <span class="keyword">instanceof</span> <span class="keyword">self</span>) &#123;</div><div class="line">            <span class="keyword">self</span>::$instance = <span class="keyword">new</span> <span class="keyword">self</span>();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>::$instance;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="test-math"><a href="#test-math" class="headerlink" title="test math"></a>test math</h2><p>这是测试用的$\lambda$</p>
-<p>$$\frac{\partial u}{\partial t}<br>= h^2 \left( \frac{\partial^2 u}{\partial x^2} +<br>\frac{\partial^2 u}{\partial y^2} +<br>\frac{\partial^2 u}{\partial z^2}\right)$$</p>
-]]></content>
-    </entry>
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/compiler/">compiler</a>
+          
+            <a href="/tags/yacc/">yacc</a>
+          
+            <a href="/tags/lex/">lex</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/02/06/hello-world/">
+        <span class="next-text nav-default">Hello World</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:it.liubang@gmail.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/iliubang" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">刘邦</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://iliubang.github.io/2017/02/06/基于C语言的编程语言开发yacc-lex初步/';
+        this.page.identifier = '2017/02/06/基于C语言的编程语言开发yacc-lex初步/';
+        this.page.title = '基于C语言的编程语言开发yacc_lex初步';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//true.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+
     
   
+
+
+
+
+
   
-</search>
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.2.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.2.x"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
