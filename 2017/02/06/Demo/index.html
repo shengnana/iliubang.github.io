@@ -2,7 +2,7 @@
 <html lang="">
   <head>
     
-<meta charset="UTF-8"/>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -40,7 +40,7 @@
 <meta property="og:site_name" content="刘邦的博客">
 <meta property="og:description" content="this is my demo document.
 12345678910111213141516171819namespace fooclass App &amp;#123;        private static $instance = null;    private function __construct() &amp;#123;    &amp;#125;        public static fun">
-<meta property="og:updated_time" content="2017-02-06T03:47:53.574Z">
+<meta property="og:updated_time" content="2017-02-06T06:32:39.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Demo">
 <meta name="twitter:description" content="this is my demo document.
@@ -81,11 +81,11 @@
 
 
 
-    <title> Demo · 刘邦的博客 </title>
+    <title> Demo · 刘邦的博客 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   </head>
 
   <body>
-    <div class="container">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
       <header id="header" class="header"><div class="logo-wrapper">
   <a href="/." class="logo">刘邦的博客</a>
 </div>
@@ -179,11 +179,20 @@
 
     
     
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#test-math"><span class="toc-text">test math</span></a></li></ol>
+    </div>
+  </div>
+
 
     <div class="post-content">
       
         <p>this is my demo document.</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">foo</span></div><div class="line"></div><div class="line"><span class="title">class</span> <span class="title">App</span> &#123;</div><div class="line">    </div><div class="line">    <span class="title">private</span> <span class="title">static</span> $<span class="title">instance</span> = <span class="title">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">    &#125;    </div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!<span class="keyword">self</span>::$instance <span class="keyword">instanceof</span> <span class="keyword">self</span>) &#123;</div><div class="line">            <span class="keyword">self</span>::$instance = <span class="keyword">new</span> <span class="keyword">self</span>();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>::$instance;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="test-math"><a href="#test-math" class="headerlink" title="test math"></a>test math</h2><p>这是测试用的$\lambda$</p>
+<p>$$\frac{\partial u}{\partial t}<br>= h^2 \left( \frac{\partial^2 u}{\partial x^2} +<br>\frac{\partial^2 u}{\partial y^2} +<br>\frac{\partial^2 u}{\partial z^2}\right)$$</p>
 
       
     </div>
@@ -325,7 +334,24 @@
   
 
     <script type="text/javascript" src="/js/src/even.js?v=2.2.x"></script>
-<script type="text/javascript" src="/js/src/bootstrap.js?v=2.2.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.2.x"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
   </body>
 </html>
