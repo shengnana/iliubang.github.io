@@ -12,8 +12,12 @@
 
 
 
+  <meta name="description" content="单例模式"/>
 
 
+
+
+  <meta name="keywords" content="design patterns,singleton," />
 
 
 
@@ -27,15 +31,22 @@
 
 
 
-<link rel="canonical" href="http://iliubang.github.io/"/>
+<link rel="canonical" href="http://iliubang.github.io/2017/02/08/单例模式/"/>
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="BangLau">
-<meta property="og:url" content="http://iliubang.github.io/index.html">
+<meta name="description" content="单例模式概述单例模式是一种常用的软件设计模式。在他的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。数学和逻辑学中，singleton定义为“有且仅有一个元素的集合”.单例模式最初的定义出现在《设计模式》（艾迪生维斯理，1994）：“保证一个类仅有一个实例，并提供一个访问它的全局访问点。”
+基本实现思路单例模式要求能够有返回对象一个引用（永远是同一个）和一个获">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单例模式">
+<meta property="og:url" content="http://iliubang.github.io/2017/02/08/单例模式/index.html">
 <meta property="og:site_name" content="BangLau">
+<meta property="og:description" content="单例模式概述单例模式是一种常用的软件设计模式。在他的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。数学和逻辑学中，singleton定义为“有且仅有一个元素的集合”.单例模式最初的定义出现在《设计模式》（艾迪生维斯理，1994）：“保证一个类仅有一个实例，并提供一个访问它的全局访问点。”
+基本实现思路单例模式要求能够有返回对象一个引用（永远是同一个）和一个获">
+<meta property="og:updated_time" content="2017-02-08T03:21:20.817Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BangLau">
+<meta name="twitter:title" content="单例模式">
+<meta name="twitter:description" content="单例模式概述单例模式是一种常用的软件设计模式。在他的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。数学和逻辑学中，singleton定义为“有且仅有一个元素的集合”.单例模式最初的定义出现在《设计模式》（艾迪生维斯理，1994）：“保证一个类仅有一个实例，并提供一个访问它的全局访问点。”
+基本实现思路单例模式要求能够有返回对象一个引用（永远是同一个）和一个获">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.2.x" />
@@ -72,7 +83,7 @@
 
 
 
-    <title> BangLau </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <title> 单例模式 · BangLau </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   </head>
 
   <body>
@@ -200,14 +211,12 @@
         <div class="content-wrapper">
           <div id="content" class="content">
             
-  <section id="posts" class="posts">
-    
-      
+  
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2017/02/08/单例模式/">单例模式</a>
+          单例模式
         
       </h1>
 
@@ -220,14 +229,17 @@
 
     
     
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#单例模式概述"><span class="toc-text">单例模式概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基本实现思路"><span class="toc-text">基本实现思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#单例模式的8种写法"><span class="toc-text">单例模式的8种写法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#饿汉式（静态常亮）"><span class="toc-text">饿汉式（静态常亮）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#饿汉式（静态代码块）"><span class="toc-text">饿汉式（静态代码块）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#懒汉式（线程不安全）"><span class="toc-text">懒汉式（线程不安全）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#懒汉式（线程安全，同步方法）"><span class="toc-text">懒汉式（线程安全，同步方法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#懒汉式（线程安全，同步代码块）"><span class="toc-text">懒汉式（线程安全，同步代码块）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#双重检查"><span class="toc-text">双重检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态内部类"><span class="toc-text">静态内部类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#枚举"><span class="toc-text">枚举</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+    </div>
+  </div>
+
 
     <div class="post-content">
       
-        
-        
-
-        
-          <h1 id="单例模式概述"><a href="#单例模式概述" class="headerlink" title="单例模式概述"></a>单例模式概述</h1><p>单例模式是一种常用的软件设计模式。在他的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。<br>数学和逻辑学中，singleton定义为“有且仅有一个元素的集合”.<br>单例模式最初的定义出现在《设计模式》（艾迪生维斯理，1994）：“保证一个类仅有一个实例，并提供一个访问它的全局访问点。”</p>
+        <h1 id="单例模式概述"><a href="#单例模式概述" class="headerlink" title="单例模式概述"></a>单例模式概述</h1><p>单例模式是一种常用的软件设计模式。在他的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。<br>数学和逻辑学中，singleton定义为“有且仅有一个元素的集合”.<br>单例模式最初的定义出现在《设计模式》（艾迪生维斯理，1994）：“保证一个类仅有一个实例，并提供一个访问它的全局访问点。”</p>
 <h1 id="基本实现思路"><a href="#基本实现思路" class="headerlink" title="基本实现思路"></a>基本实现思路</h1><p>单例模式要求能够有返回对象一个引用（永远是同一个）和一个获得该实例的方法（必须是静态方法，通常使用getInstance这个名称）<br>单例的实现主要是通过以下两个步骤：</p>
 <ol>
 <li>将该类的构造方法私有化，这样其他处理的代码就无法通过调用该类的构造方法来实例化该类的对象，只有通过该类提供的静态方法来得到该类唯一的实例；</li>
@@ -252,191 +264,74 @@
 <p>这种方式是Effective Java作者Josh Bloch 提倡的方式，它不仅能避免多线程同步问题，而且还能防止反序列化重新创建新的对象，可谓是很坚强的壁垒啊，不过，个人认为由于1.5中才加入enum特性，用这种方式写不免让人感觉生疏，在实际工作中，我也很少看见有人这么写过。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>虽然单例模式有这么多写法，但是其核心思想是不变的，即保证一个类有且仅有一个实例对象，在实际的开发中，我们应该结合场景选择合适的一种。</p>
 
-        
       
     </div>
 
     
-
-    
-  </article>
-
-    
       
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/02/07/工厂设计模式/">工厂设计模式</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          Feb 7, 2017
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
       
-        
-        
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/image/reward/wechat.png" title="wechat">
+        </label>
+      
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
           
-        
-
-        
-          <h1 id="工厂模式概述"><a href="#工厂模式概述" class="headerlink" title="工厂模式概述"></a>工厂模式概述</h1><p>工厂(Factory Pattern)模式是Java中最常用的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。<br>在工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象。</p>
-<h1 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h1><p><img src="/img/2017020701.jpg" alt="uml图"></p>
-          <div class="read-more">
-            <a href="/2017/02/07/工厂设计模式/" class="read-more-link">Read more..</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/02/07/设计模式/">设计模式</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          Feb 7, 2017
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
+            <a href="/tags/design-patterns/">design patterns</a>
           
-        
-
-        
-          <h1 id="设计模式简介"><a href="#设计模式简介" class="headerlink" title="设计模式简介"></a>设计模式简介</h1><p>设计模式(design patterns)是一套被反复使用、多数人知晓的、经过分类编目的代码设计经验总结。使用设计模式是为了可重用代码、让代码更容易被他人理解，保证代码的可靠性。毫无疑问，设计模式于己于人都是有利的。设计模式使代码编制真正工程化，设计模式是软件工程的基石，如通大厦的一块砖石一样。项目中合理运用设计模式可以完美的解决很多问题，每种设计模式在现在中都有相应的原理与之对应，每一个模式描述了一个在我们周围不断重复发生的问题，以及该问题的核心解决方案，这也是它能被广泛应用的原因。</p>
-          <div class="read-more">
-            <a href="/2017/02/07/设计模式/" class="read-more-link">Read more..</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/02/06/基于C语言的编程语言开发yacc-lex初步/">基于C语言的编程语言开发yacc_lex初步</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          Feb 6, 2017
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
+            <a href="/tags/singleton/">singleton</a>
           
-        
+        </div>
 
         
-          <h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>当今世道，各种高级语言百花齐放。然而会有人发出这样的疑问–计算机真的能够识别这么多语言吗？稍微有点常识的人都知道，这显然是不可能滴！在计算机的世界里，他们能够直接识别的只有机器语言。然而，由于机器语言对人类不够友好，所以人们才发明了汇编，c，Java…许许多多的人类易读的编程语言，所以我个人对编程语言的理解一直是其实他们就是机器语言的语法糖，而编程语言的创造过程，就是定义一种合理的，没有二义性的语法规则，然后就是通过直接或间接的方式实现该语法到机器语言的转换过程。既然是这样的话，那么我们就很容易想到，计算机语言是一个自我完善的过程：首先我们定了一种非常简单的x1(这里只是用来举例说明，有没有x语言有待考证)语言，然后用机器语言实现了这个非常简单的x1语言的编译器，创造了x1语言，实现了非常简单的新特性，然后我们再用x1语言(相对于机器语言较高级)实现了另一些新的特性的x2语言的编译器，创造了x2语言，…
-          <div class="read-more">
-            <a href="/2017/02/06/基于C语言的编程语言开发yacc-lex初步/" class="read-more-link">Read more..</a>
-          </div>
         
-      
-    </div>
-
-    
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/02/06/Demo/">Demo</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          Feb 6, 2017
-        </span>
-      </div>
-    </header>
-
+  <nav class="post-nav">
     
     
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p>this is my demo document.</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">foo</span></div><div class="line"></div><div class="line"><span class="title">class</span> <span class="title">App</span> &#123;</div><div class="line">    </div><div class="line">    <span class="title">private</span> <span class="title">static</span> $<span class="title">instance</span> = <span class="title">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">    &#125;    </div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!<span class="keyword">self</span>::$instance <span class="keyword">instanceof</span> <span class="keyword">self</span>) &#123;</div><div class="line">            <span class="keyword">self</span>::$instance = <span class="keyword">new</span> <span class="keyword">self</span>();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>::$instance;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="test-math"><a href="#test-math" class="headerlink" title="test math"></a>test math</h2><p>这是测试用的$\lambda$</p>
-<p>$$\frac{\partial u}{\partial t}<br>= h^2 \left( \frac{\partial^2 u}{\partial x^2} +<br>\frac{\partial^2 u}{\partial y^2} +<br>\frac{\partial^2 u}{\partial z^2}\right)$$</p>
-
-        
-      
-    </div>
-
-    
-
-    
-  </article>
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    
+      <a class="next" href="/2017/02/07/工厂设计模式/">
+        <span class="next-text nav-default">工厂设计模式</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
+      </footer>
+    
+  </article>
+
 
           </div>
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
         </div>  
       </main>
 
@@ -506,9 +401,9 @@
 
   <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = '';
-        this.page.identifier = 'index.html';
-        this.page.title = '';
+        this.page.url = 'http://iliubang.github.io/2017/02/08/单例模式/';
+        this.page.identifier = '2017/02/08/单例模式/';
+        this.page.title = '单例模式';
     };
     (function() {
     var d = document, s = d.createElement('script');
@@ -537,24 +432,7 @@
   
 
     <script type="text/javascript" src="/js/src/even.js?v=2.2.x"></script>
-<script type="text/javascript" src="/js/src/bootstrap.js?v=2.2.x"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.2.x"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
   </body>
 </html>
