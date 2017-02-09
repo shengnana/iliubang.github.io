@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="适配器模式"/>
+
+
+
+
+  <meta name="keywords" content="design patterns,adapter," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangLau">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.2.x" />
+
+
+
+<link rel="canonical" href="http://iliubang.github.io/2017/02/09/适配器模式/"/>
+
+
+<meta name="description" content="适配器模式概述在计算机编程中，适配器(adapter)模式(有时候也称包装样式或者包装)将一个类的接口适配称用户所期待的。一个适配允许通常因为接口不兼容而不能在一起工作的类工作在一起，做法是将类自己的接口包裹在一个已存在的类中。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="适配器模式">
+<meta property="og:url" content="http://iliubang.github.io/2017/02/09/适配器模式/index.html">
+<meta property="og:site_name" content="BangLau">
+<meta property="og:description" content="适配器模式概述在计算机编程中，适配器(adapter)模式(有时候也称包装样式或者包装)将一个类的接口适配称用户所期待的。一个适配允许通常因为接口不兼容而不能在一起工作的类工作在一起，做法是将类自己的接口包裹在一个已存在的类中。">
+<meta property="og:image" content="http://iliubang.github.io/img/2017020902.jpg">
+<meta property="og:image" content="http://iliubang.github.io/img/2017020903.jpg">
+<meta property="og:updated_time" content="2017-02-09T03:07:01.198Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="适配器模式">
+<meta name="twitter:description" content="适配器模式概述在计算机编程中，适配器(adapter)模式(有时候也称包装样式或者包装)将一个类的接口适配称用户所期待的。一个适配允许通常因为接口不兼容而不能在一起工作的类工作在一起，做法是将类自己的接口包裹在一个已存在的类中。">
+<meta name="twitter:image" content="http://iliubang.github.io/img/2017020902.jpg">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.2.x" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    search: {
+      enable: true,
+      path: "/search.xml",
+    },
+    navbar: {
+      enable: true
+    },
+    fancybox: {
+      enable: true
+    },
+    toc: {
+      enable: true
+    },
+  };
+</script>
+
+
+
+  
+
+
+
+    <title> 适配器模式 · BangLau </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">BangLau</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              Categories
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              Tags
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              About
+            
+          </a>
+        </li>
+      
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">BangLau</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      <a class="mobile-menu-item" href="/">
+        
+        
+          Home
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/archives/">
+        
+        
+          Archives
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/categories">
+        
+        
+          Categories
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/tags">
+        
+        
+          Tags
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/about">
+        
+        
+          About
+        
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          适配器模式
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          Feb 9, 2017
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#适配器模式概述"><span class="toc-text">适配器模式概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用场景"><span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#具体描述"><span class="toc-text">具体描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适配器模式的优缺点"><span class="toc-text">适配器模式的优缺点</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <h1 id="适配器模式概述"><a href="#适配器模式概述" class="headerlink" title="适配器模式概述"></a>适配器模式概述</h1><p>在计算机编程中，适配器(adapter)模式(有时候也称包装样式或者包装)将一个类的接口适配称用户所期待的。一个适配允许通常因为接口不兼容而不能在一起工作的类工作在一起，做法是将类自己的接口包裹在一个已存在的类中。<br><a id="more"></a></p>
+<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
+<li>已存在的类接口不符合我们的需求。</li>
+<li>创建一个可以复用的类，使得该类可以与其他不相关的类或不可预见的类(即那些接口可能不一定兼容的类)协同工作。</li>
+<li>在不对每一个都进行子类化以匹配他们的几口的情况下，使用一些已经存在的子类。</li>
+</ol>
+<h1 id="具体描述"><a href="#具体描述" class="headerlink" title="具体描述"></a>具体描述</h1><p><img src="/img/2017020902.jpg" alt="适配器模式类图"></p>
+<p>电源适配器，他是用于电流变换（整流）的设备。适配器的存在，就是为了将已存在的东西（接口）转换成适合我们的需求，能被我们所利用。在现实生活中，适配器更多的是作为一个中间层来实现这种转换作用。<br>在上面的通用类图中，<code>Client</code>类最终面对的是<code>Target</code>接口（或抽象类），它知识能够使用符合这一目标标准的子类；而<code>Adapter</code>类则是被适配的对象（也称源角色），因为它包含<code>specific</code>（特殊的）操作，功能等，所以我们想要在自己的系统中使用它，将其转换成符合我们标准的类，使得<code>Client</code>类可以在透明的情况下任意选择使用<code>Concrete Target</code>类或是具有特殊功能的<code>Adatee</code>类。</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//已存在的，具有特殊功能的，但是不符合既有的标准接口的类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Adaptee</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">specificRequest</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"被适配类具有特殊功能..."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//目标接口，或称为标准接口</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Target</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">request</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//具体目标类，只提供普通功能</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteTarget</span> <span class="keyword">implements</span> <span class="title">Target</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">request</span><span class="params">()</span>  </span>&#123;</div><div class="line">        System.out.println(<span class="string">"普通类，具有普通功能..."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//适配器类，继承了被适配类，同时实现了标准接口</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Adapter</span> <span class="keyword">extends</span> <span class="title">Adaptee</span> <span class="keyword">implements</span> <span class="title">Target</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">request</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.specificRequest();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//测试</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</div><div class="line">    <span class="function">publc <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">//使用普通类功能</span></div><div class="line">        Target concreteTarget = <span class="keyword">new</span> ConcreteTarget();</div><div class="line">        concreteTarget.request();</div><div class="line">        <span class="comment">//使用特殊功能，即适配类</span></div><div class="line">        Target adapter = <span class="keyword">new</span> Adapter();</div><div class="line">        adapter.request();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面这种实现的适配器称为类适配器，因为<code>Adapter</code>类既继承了<code>Adaptee</code>（被适配类），也实现了<code>Target</code>接口（因为java不支持多继承，所以这样来实现），在<code>Client</code>类中我们可以根据需要选择并创建任意一种符合要求的子类，来实现具体功能。</p>
+<p>另外一种适配器模式是对象适配器，它不是使用多继承或继承再实现的方式，而是使用直接关联，或者成为委托的方式，类图如下：<br><img src="/img/2017020903.jpg" alt="对象适配器模式类图"></p>
+<p>代码实现如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//适配器类，直接关联被适配类，同时实现标准接口</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Adapter</span> <span class="keyword">implements</span> <span class="title">Target</span> </span>&#123;</div><div class="line">    <span class="comment">//直接关联被适配类</span></div><div class="line">    <span class="keyword">private</span> Adaptee adaptee;</div><div class="line"></div><div class="line">    <span class="comment">//可以通过构造函数传入具体需要适配的被适配对象</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Adapter</span><span class="params">(Adaptee adaptee)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.adaptee = adaptee;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">request</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.adaptee.specificRequest();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//测试类</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">//使用普通类</span></div><div class="line">        Target concreteTarget = <span class="keyword">new</span> ConcreteTarget();</div><div class="line">        concreteTarget.request();</div><div class="line">        <span class="comment">//使用特殊功能</span></div><div class="line">        Target adapter = <span class="keyword">new</span> Adapter(<span class="keyword">new</span> Adaptee());</div><div class="line">        adapter.request();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="适配器模式的优缺点"><a href="#适配器模式的优缺点" class="headerlink" title="适配器模式的优缺点"></a>适配器模式的优缺点</h1><p><strong>优点</strong><br>适配器模式也是一种包装模式，对象适配器模式还有委托的意思。总的来说适配器模式属于补偿模式，专用来在系统后期扩展，修改时使用。</p>
+<p><strong>缺点</strong><br>过多的使用适配器，会让系统非常凌乱，不易整体进行把握。比如，明明看到调用的是<code>A</code>接口，其实内部被适配称了<code>B</code>接口的实现，一个系统如果出现太多的这种情况，无异于异常灾难。因此如果不是很有必要，可以不适用适配器，而是直接对系统重构。</p>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/image/reward/wechat.png" title="wechat">
+        </label>
+      
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/design-patterns/">design patterns</a>
+          
+            <a href="/tags/adapter/">adapter</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/02/09/原型模式/">
+        <span class="next-text nav-default">原型模式</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:it.liubang@gmail.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/iliubang" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">刘邦</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://iliubang.github.io/2017/02/09/适配器模式/';
+        this.page.identifier = '2017/02/09/适配器模式/';
+        this.page.title = '适配器模式';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//true.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.2.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.2.x"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+  </body>
+</html>
