@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="数据结构-链表"/>
+
+
+
+
+  <meta name="keywords" content="algorithm,list," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangLau">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.2.x" />
+
+
+
+<link rel="canonical" href="http://iliubang.github.io/2017/02/23/数据结构-链表/"/>
+
+
+<meta name="description" content="链表概述链表是一种物理存储单元上非连续、非顺序的存储结构，数据元素的逻辑顺序是通过链表中的指针链接次序实现的。链表由一系列结点（链表中每一个元素称为结点）组成，结点可以在运行时动态生成。每个结点包括两部分：一个是存储数据元素的数据域，另一个是存储下一个结点的指针域。相比于线性表顺序结构，操作复杂。由于不必须按照顺序存储，链表在插入的时候可以达到O(1)的时间复杂度，比另一种线性表快的多，但是查找一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构-链表">
+<meta property="og:url" content="http://iliubang.github.io/2017/02/23/数据结构-链表/index.html">
+<meta property="og:site_name" content="BangLau">
+<meta property="og:description" content="链表概述链表是一种物理存储单元上非连续、非顺序的存储结构，数据元素的逻辑顺序是通过链表中的指针链接次序实现的。链表由一系列结点（链表中每一个元素称为结点）组成，结点可以在运行时动态生成。每个结点包括两部分：一个是存储数据元素的数据域，另一个是存储下一个结点的指针域。相比于线性表顺序结构，操作复杂。由于不必须按照顺序存储，链表在插入的时候可以达到O(1)的时间复杂度，比另一种线性表快的多，但是查找一">
+<meta property="og:updated_time" content="2017-02-23T08:27:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构-链表">
+<meta name="twitter:description" content="链表概述链表是一种物理存储单元上非连续、非顺序的存储结构，数据元素的逻辑顺序是通过链表中的指针链接次序实现的。链表由一系列结点（链表中每一个元素称为结点）组成，结点可以在运行时动态生成。每个结点包括两部分：一个是存储数据元素的数据域，另一个是存储下一个结点的指针域。相比于线性表顺序结构，操作复杂。由于不必须按照顺序存储，链表在插入的时候可以达到O(1)的时间复杂度，比另一种线性表快的多，但是查找一">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.2.x" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    search: {
+      enable: true,
+      path: "/search.xml",
+    },
+    navbar: {
+      enable: true
+    },
+    fancybox: {
+      enable: true
+    },
+    toc: {
+      enable: true
+    },
+  };
+</script>
+
+
+
+  
+
+
+
+    <title> 数据结构-链表 · BangLau </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">BangLau</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              Categories
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              Tags
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              About
+            
+          </a>
+        </li>
+      
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">BangLau</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      <a class="mobile-menu-item" href="/">
+        
+        
+          Home
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/archives/">
+        
+        
+          Archives
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/categories">
+        
+        
+          Categories
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/tags">
+        
+        
+          Tags
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/about">
+        
+        
+          About
+        
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          数据结构-链表
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          Feb 23, 2017
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#链表概述"><span class="toc-text">链表概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#定义链表的数据结构和操作原型"><span class="toc-text">定义链表的数据结构和操作原型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#链表结点的数据结构"><span class="toc-text">链表结点的数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链表结构的操作原型定义"><span class="toc-text">链表结构的操作原型定义</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#完整的代码实现"><span class="toc-text">完整的代码实现</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <h1 id="链表概述"><a href="#链表概述" class="headerlink" title="链表概述"></a>链表概述</h1><p>链表是一种物理存储单元上非连续、非顺序的存储结构，数据元素的逻辑顺序是通过链表中的指针链接次序实现的。链表由一系列结点（链表中每一个元素称为结点）组成，结点可以在运行时动态生成。每个结点包括两部分：一个是存储数据元素的数据域，另一个是存储下一个结点的指针域。相比于线性表顺序结构，操作复杂。由于不必须按照顺序存储，链表在插入的时候可以达到O(1)的时间复杂度，比另一种线性表快的多，但是查找一个结点或者访问特定编号的结点则需要O(n)的事件，而线性表和顺序表相应的时间复杂度分别是O(logn)和O(1)</p>
+<a id="more"></a>
+<h1 id="定义链表的数据结构和操作原型"><a href="#定义链表的数据结构和操作原型" class="headerlink" title="定义链表的数据结构和操作原型"></a>定义链表的数据结构和操作原型</h1><h2 id="链表结点的数据结构"><a href="#链表结点的数据结构" class="headerlink" title="链表结点的数据结构"></a>链表结点的数据结构</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> Cell &#123;</div><div class="line">    <span class="keyword">struct</span> Cell *next;</div><div class="line">    <span class="keyword">void</span> *value;</div><div class="line">    <span class="keyword">sizt_t</span> size;</div><div class="line">&#125; ListCell;</div></pre></td></tr></table></figure>
+<p>上面的结构中，用<code>next</code>保存下一个结点的地址，<code>void *value</code>保存当前结点的数据，而<code>size</code>保存的是当前结点的数据所占的字节数.</p>
+<h2 id="链表结构的操作原型定义"><a href="#链表结构的操作原型定义" class="headerlink" title="链表结构的操作原型定义"></a>链表结构的操作原型定义</h2><p>1) 初始化一个结点<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function">ListCell *<span class="title">listConstruct</span><span class="params">(<span class="keyword">void</span> *value, <span class="keyword">sizt_t</span> size, ListCell *next)</span></span>;</div></pre></td></tr></table></figure></p>
+<p>该方法用来构造一个结点，并且将其连接到<code>next</code>之前</p>
+<p>2) 链表反转<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function">ListCell *<span class="title">listReverse</span><span class="params">(ListCell *cell)</span></span>;</div></pre></td></tr></table></figure></p>
+<p>顾名思义，就是讲一个链表进行180°旋转，使得之前的链表头结点变成尾结点，之前的尾结点称为头结点，中间结点的相对位置对调.</p>
+<p>3) 删除链表<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">listDel</span><span class="params">(ListCell *cell)</span></span>;</div></pre></td></tr></table></figure></p>
+<p>该方法是用来对链表进行销毁，释放链表占用的空间.</p>
+<p>4) 遍历链表<br>这里我们先定义一个<code>Iterator</code><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">bool</span> <span class="params">(*Iterator)</span><span class="params">(<span class="keyword">void</span> *value)</span></span>;</div></pre></td></tr></table></figure></p>
+<p>上述定义了一个迭代器，用来对链表结点进行迭代操作<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function">IterationResult <span class="title">listForEach</span><span class="params">(ListCell *cell, Iterator iterator)</span></span>;</div></pre></td></tr></table></figure></p>
+<p>遍历链表的第二个参数是一个<code>Iterator</code>，方便用户自定义迭代器，对链表进行操作</p>
+<h1 id="完整的代码实现"><a href="#完整的代码实现" class="headerlink" title="完整的代码实现"></a>完整的代码实现</h1><p>list.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">#ifndef LIST_H</div><div class="line">#define LIST_H</div><div class="line"></div><div class="line">#include &lt;stdbool.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line"></div><div class="line">typedef enum IterationResult &#123;</div><div class="line">    BREAK, DONE</div><div class="line">&#125; IterationResult;</div><div class="line"></div><div class="line">typedef bool (*Iterator)(void *);</div><div class="line"></div><div class="line">typedef struct Cell &#123;</div><div class="line">    struct Cell *next;</div><div class="line">    void *value;</div><div class="line">    size_t size;</div><div class="line">&#125; ListCell;</div><div class="line"></div><div class="line">ListCell *listConstruct(void *, size_t, ListCell *);</div><div class="line">ListCell *listReverse(ListCell *);</div><div class="line">void listDel(ListCell *);</div><div class="line">IterationResult listForEach(ListCell *, Iterator);</div><div class="line"></div><div class="line">#endif</div></pre></td></tr></table></figure>
+<p>list.c<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"list.h"</span></span></div><div class="line"></div><div class="line"><span class="function">ListCell *<span class="title">listConstruct</span><span class="params">(<span class="keyword">void</span> *value, <span class="keyword">sizt_t</span> size, ListCell *next)</span></span></div><div class="line">&#123;</div><div class="line">    ListCell *cell = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(ListCell));</div><div class="line">    cell-&gt;next = next;</div><div class="line">    cell-&gt;value = <span class="built_in">malloc</span>(size);</div><div class="line">    cell-&gt;size = size;</div><div class="line"></div><div class="line">    <span class="built_in">memcpy</span>(cell-&gt;value, value, size);</div><div class="line">    <span class="keyword">return</span> cell;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">ListCell *<span class="title">listReverse</span><span class="params">(ListCell, *cell)</span></span></div><div class="line">&#123;</div><div class="line">    ListCell *prev = <span class="literal">NULL</span>;</div><div class="line">    <span class="keyword">while</span>(cell) &#123;</div><div class="line">        ListCell *next = cell-&gt;next;</div><div class="line">        cell-&gt;next = prev;</div><div class="line">        prev = cell;</div><div class="line">        cell = next;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> prev;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">listDel</span><span class="params">(ListCell *cell)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (!cell) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">do</span> &#123;</div><div class="line">        ListCell *next = cell-&gt;next;</div><div class="line">        <span class="built_in">free</span>(cell-&gt;value);</div><div class="line">        <span class="built_in">free</span>(cell);</div><div class="line">        cell = next;</div><div class="line">    &#125; <span class="keyword">while</span>(cell); </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">IterationResult <span class="title">listForEach</span><span class="params">(ListCell *cell, ListIterator iterator)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (!cell) <span class="keyword">return</span> DONE;</div><div class="line">    <span class="keyword">bool</span> res;</div><div class="line">    <span class="keyword">do</span> &#123;</div><div class="line">        res = iterator(cell-&gt;value);</div><div class="line">        cell = cell-&gt;next;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> res ? DONE : BREAK;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>test.c<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"list.h"</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">printEach</span><span class="params">(<span class="keyword">void</span> *value)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, value);</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ListCell *cell = <span class="literal">NULL</span>;</div><div class="line">    <span class="keyword">char</span> *name = <span class="string">"liubang"</span>;</div><div class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (i; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">        cell = listConstruct(name, <span class="keyword">sizeof</span>(name), cell);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    listForEach(cell, printEach);</div><div class="line">    listDel(cell);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/image/reward/wechat.png" title="wechat">
+        </label>
+      
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/algorithm/">algorithm</a>
+          
+            <a href="/tags/list/">list</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/02/17/语法/">
+        <span class="next-text nav-default">语法</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:it.liubang@gmail.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/iliubang" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">刘邦</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://iliubang.github.io/2017/02/23/数据结构-链表/';
+        this.page.identifier = '2017/02/23/数据结构-链表/';
+        this.page.title = '数据结构-链表';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//true.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.2.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.2.x"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+  </body>
+</html>
