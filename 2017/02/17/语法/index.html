@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="语法"/>
+
+
+
+
+  <meta name="keywords" content="compiler,syntax," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangLau">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.2.x" />
+
+
+
+<link rel="canonical" href="http://iliubang.github.io/2017/02/17/语法/"/>
+
+
+<meta name="description" content="文法自然地描述了大多数程序设计语言构造的层次化语法结构。例如，Java中的if-else语句通常具有如下形式：1if (expression) statement else statement
+即一个if-else语句由关键字if、左括号、表达式、右括号、一个语句、关键字else和另一个语句连接而成。如果我们用变量expr来表示表达式，用变量stmt来表示语句，那么这个构造规则可以表示为：1stm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="语法">
+<meta property="og:url" content="http://iliubang.github.io/2017/02/17/语法/index.html">
+<meta property="og:site_name" content="BangLau">
+<meta property="og:description" content="文法自然地描述了大多数程序设计语言构造的层次化语法结构。例如，Java中的if-else语句通常具有如下形式：1if (expression) statement else statement
+即一个if-else语句由关键字if、左括号、表达式、右括号、一个语句、关键字else和另一个语句连接而成。如果我们用变量expr来表示表达式，用变量stmt来表示语句，那么这个构造规则可以表示为：1stm">
+<meta property="og:updated_time" content="2017-02-17T08:25:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="语法">
+<meta name="twitter:description" content="文法自然地描述了大多数程序设计语言构造的层次化语法结构。例如，Java中的if-else语句通常具有如下形式：1if (expression) statement else statement
+即一个if-else语句由关键字if、左括号、表达式、右括号、一个语句、关键字else和另一个语句连接而成。如果我们用变量expr来表示表达式，用变量stmt来表示语句，那么这个构造规则可以表示为：1stm">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.2.x" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    search: {
+      enable: true,
+      path: "/search.xml",
+    },
+    navbar: {
+      enable: true
+    },
+    fancybox: {
+      enable: true
+    },
+    toc: {
+      enable: true
+    },
+  };
+</script>
+
+
+
+  
+
+
+
+    <title> 语法 · BangLau </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">BangLau</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              Categories
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              Tags
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              About
+            
+          </a>
+        </li>
+      
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">BangLau</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      <a class="mobile-menu-item" href="/">
+        
+        
+          Home
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/archives/">
+        
+        
+          Archives
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/categories">
+        
+        
+          Categories
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/tags">
+        
+        
+          Tags
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/about">
+        
+        
+          About
+        
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          语法
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          Feb 17, 2017
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#文法定义"><span class="toc-text">文法定义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#词法单元和终结符号"><span class="toc-text">词法单元和终结符号</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#推导"><span class="toc-text">推导</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#语法分析树"><span class="toc-text">语法分析树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#树型结构"><span class="toc-text">树型结构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二义性"><span class="toc-text">二义性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运算符的结核性"><span class="toc-text">运算符的结核性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运算符的优先级"><span class="toc-text">运算符的优先级</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <p>文法自然地描述了大多数程序设计语言构造的层次化语法结构。例如，Java中的<code>if-else</code>语句通常具有如下形式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if (expression) statement else statement</div></pre></td></tr></table></figure></p>
+<p>即一个<code>if-else</code>语句由关键字<code>if</code>、左括号、表达式、右括号、一个语句、关键字<code>else</code>和另一个语句连接而成。如果我们用变量<code>expr</code>来表示表达式，用变量<code>stmt</code>来表示语句，那么这个构造规则可以表示为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">stmt -&gt; if (expr) stmt else stmt</div></pre></td></tr></table></figure></p>
+<p>其中箭头(-&gt;)可以读作“可以具有如下形式”。这样的规则称为产生式(production)。在一个产生式中，像关键字<code>if</code>和括号这样的词法元素称为终结符号(terminal)。像<code>expr</code>和<code>stmt</code>这样的变量表示终结符号的序列，他们称为非终结符号(nonterminal)。<br><a id="more"></a></p>
+<h1 id="文法定义"><a href="#文法定义" class="headerlink" title="文法定义"></a>文法定义</h1><p>一个上下文无关文法(context-free grammar)由四个元素组成：<br>1）一个终结符号集合，他们有时也称为“词法单元”。终结符号是该文法所定义的语言的基本符号的集合。<br>2）一个非终结符号集合，他们有时也称为“语法变量”。每个非终结符号表示一个终结符号串的集合。<br>3）一个产生式集合，其中每个产生式包括一个称为产生式头或左部的非终结符号，一个箭头，和一个称为产生式体或右部的由终结符号及非终结符号组成的序列。产生式主要用来表示某个构造的某种书写形式。如果产生式头非终结符号代表一个构造，那么该产生式体就代表了该构造的一种书写方式。<br>4）指定一个非终结符号为开始符号。</p>
+<h2 id="词法单元和终结符号"><a href="#词法单元和终结符号" class="headerlink" title="词法单元和终结符号"></a>词法单元和终结符号</h2><p>在编译器中，词法分析器读入源程序中的字符序列，将他们组织为具有词法含义的词素，生成并输出代表这些词素的词法单元序列。词法单元由两部分组成：名字和属性值。词法单元的名字是语法分析器进行语法分析时使用的抽象符号。我们常常把这些词法单元名字称为终结符号，因为他们在描述程序设计语言的文法中是以终结符号的形式出现的。如果词法单元具有属性值，那么这个值就是一个指向符号表的指针，符号表中包含了该词法单元的附加信息。这些附加信息不是文法的组成部分，因此在我们讨论语法分析时，通常将词法单元和终结符号当做同义词。</p>
+<p>在描述文法的时候，我们会列出该文法的产生式，并且首先列出开始符号对应的产生式。我们假设数位、符号（如&lt;、&lt;=）和黑体字符串（如<strong>while</strong>）都是终结符号。斜体字符串表示非终结符号，所有非斜体的名字或符号都可以看做是终结符号。为了表示方便，以同一个非终结符号为头部的多个产生式的体可以放在一起表示，不同体之间用符号 |（读作“或”）分割。</p>
+<p>如果某个非终结符号是某个产生式的头部，我们就说该产生式是该非终结符号的产生式。一个终结符号串是由零个或多个终结符号组成的序列。零个终结符号组成的串称为空串(enpty string)，记为：$\epsilon$.</p>
+<h1 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h1><p>根据文法推导符号串时，我们首先从开始符号出发，不断将某个非终结符号替换成该非终结符号的某个产生式的体。可以从开始符号推导得到的所有终结符号串的集合称为该文法定义的语言(language)。</p>
+<p>语法分析(parsing)的任务是：接受一个终结符号串作为输入，我们从文法的开始符号推导出这个串的方法。如果不能从文法的开始符号推导得到该终结符号串，则报告该终结符号串中包含语法错误。语法分析是所有编译过程中最基本的问题之一。</p>
+<h1 id="语法分析树"><a href="#语法分析树" class="headerlink" title="语法分析树"></a>语法分析树</h1><p>语法分析树用图形的方式展现了从文法开始符号推导出相应语言中的符号串的过程。如果非终结符号A有一个产生式$A \to XYZ$，那么在语法分析树中就可能有一个标号为A的内部结点，该结点有三个子结点，从左向右的标号分别为X、Y、Z:</p>
+<p>正式的讲，给定一个上下文无关文法，该文法的一颗语法分析树(parse tree)是具有以下性质的树：<br>1）根结点的标号为文法的开始符号。<br>2）每个叶子结点的标号为一个终结符号或$\epsilon$。<br>3）每个内部结点的标号为一个非终结符号。<br>4）如果费终结符号A是某个内部结点的标号，并且它的子结点的标号从左到右分别为$X_1, X_2, …, X_n$, 那么必然存在产生式$A \to X_1X_2…X_n$，其中$X_1, X_2, …, X_n$既可以是终结符号，也可以是非终结符号。作为一个特殊情况，如果$A \to \epsilon$是一个产生式，那么一个标号为$A$的结点可以只有一个标号为$\epsilon$的子结点。</p>
+<h2 id="树型结构"><a href="#树型结构" class="headerlink" title="树型结构"></a>树型结构</h2><p>树型数据结构在编译系统中起着重要的作用。</p>
+<ul>
+<li>一棵树由一个或多个结点(node)组成。结点可以带有标号(label)。</li>
+<li>树有且只有一个根(root)结点。每个非根结点都有唯一的父(parent)结点；根结点没有父结点。当我们画树的时候，将一个结点的父结点画在它的上方，并在父、子结点之间画一条边。因此根结点是最高(顶层的)结点。</li>
+<li>如果结点$N$是结点$M$的父结点，那么$M$就是$N$的子(child)结点。一个结点的各个子结点彼此称为兄弟(sibling)结点。他们之间是有序的，按照从左向右的方式排列。</li>
+<li>没有子结点的结点称为叶子(leaf)结点。其他结点，即有一个或多个子结点的结点，称为内部结点(interior node)。</li>
+<li>结点$N$的后代(descendant)结点要么是结点$N$本身，要么是$N$的子结点，要么是$N$的子结点的子结点，以此类推。如果结点$M$是结点$N$的后代结点，那么结点$N$是结点$M$的祖先(ancestor)结点。</li>
+</ul>
+<p>一个文法的语言的另一个定义是指任何能够由某课语法分析书生成的符号串的集合。为一个给定的终结符号串构建一颗语法分析树的过程称为对该符号串进行语法分析。</p>
+<h1 id="二义性"><a href="#二义性" class="headerlink" title="二义性"></a>二义性</h1><p>在根据一个文法讨论某个符号串的结构时，我们必须非常小心。一个文法可能有多颗语法分析树能够生成同一个给定的终结符号串。这样的文法称为具有二义性(ambiguous)。要证明一个文法具有二义性，我们只需要找到一个终结符号串，说明它是两颗以上语法分析树的结果。因为具有两颗以上语法分析树的符号串通常具有多个含义，所以我们需要为编译应用设计出没有二义性的文法，或者在使用二义性文法时使用附加的规则来消除二义性。</p>
+<h1 id="运算符的结核性"><a href="#运算符的结核性" class="headerlink" title="运算符的结核性"></a>运算符的结核性</h1><p>依照惯例，$9+5+2$等价于$(9+5)+2$，$9-5-2$等价于$(9-5)-2$。当一个运算分量的左右两侧都有运算符时，我们需要一些规则来决定哪个运算符被应用于该运算分量。我们说运算符”+”是左结合(associate)的，因为当一个运算分量左右两侧都有”+”号时，它属于其左边的运算符。在大多数程序设计语言中，加、减、乘、除四种算术运算符都是左结合的。<br>某些常用的运算符是右结合的，比如指数运算。作为另一个例子，C语言中的赋值运算符”=”以及其后裔(即”+=”、”-=”等)也是右结合的。也就是说，对表达式$a=b=c$的处理和对表达式$a=(b=c)$的处理相同。<br>带有右结合运算符的串，比如$a=b=c$，可以由如下文法产生：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">right -&gt; letter = right | letter</div><div class="line">letter -&gt; a | b | ... | z</div></pre></td></tr></table></figure></p>
+<h1 id="运算符的优先级"><a href="#运算符的优先级" class="headerlink" title="运算符的优先级"></a>运算符的优先级</h1><p>考虑表达式$9+5\ast2$。该表达式有两种可能得皆是，即$(9+5)\ast2$或$9+(5\ast2)$。<code>+</code>和$\ast$的结合性规则只能作用于同一运算符的多次出现，因此他们无法解决这个二义性。为此，当多种运算符出现时，我们需要给出一些规则来定义运算符之间的相对优先关系。<br>如果$\ast$先于<code>+</code>获得运算分量，我们就说$\ast$比<code>+</code>具有更高的优先级。在通常的算术中，乘法和除法比加法和减法具有更高的优先级。因此在表达式$9+5\ast2$和$9\ast5+2$中，都是运算分量5首先参与$\ast$运算，即这两个表达式分别等价于$9+(5\ast2)$和$(9\ast5)+2$。</p>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/image/reward/wechat.png" title="wechat">
+        </label>
+      
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/compiler/">compiler</a>
+          
+            <a href="/tags/syntax/">syntax</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/02/23/数据结构-链表/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">数据结构-链表</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/02/13/代理模式/">
+        <span class="next-text nav-default">代理模式</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:it.liubang@gmail.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/iliubang" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">刘邦</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://iliubang.github.io/2017/02/17/语法/';
+        this.page.identifier = '2017/02/17/语法/';
+        this.page.title = '语法';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//true.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.2.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.2.x"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>

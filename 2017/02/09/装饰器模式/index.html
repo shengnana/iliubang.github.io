@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="装饰器模式"/>
+
+
+
+
+  <meta name="keywords" content="design patterns,decorator," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BangLau">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.2.x" />
+
+
+
+<link rel="canonical" href="http://iliubang.github.io/2017/02/09/装饰器模式/"/>
+
+
+<meta name="description" content="装饰器模式概述装饰器模式能够实现动态的为对象添加功能，是从一个对象外部来给对象添加功能。通常给对象添加功能，要么直接修改对象添加相应的功能，要么派生对应的子类来扩展，或是使用对象组合的方式。显然，直接修改对应的类这种方式并不可取。在面向对象设计中，而我们应该尽量使用对象组合，而不是对象继承来扩展和复用功能。装饰器模式就是基于对象组合的方式，可以很灵活的给对象添加所需要的功能。装饰器模式的本质就是动">
+<meta property="og:type" content="article">
+<meta property="og:title" content="装饰器模式">
+<meta property="og:url" content="http://iliubang.github.io/2017/02/09/装饰器模式/index.html">
+<meta property="og:site_name" content="BangLau">
+<meta property="og:description" content="装饰器模式概述装饰器模式能够实现动态的为对象添加功能，是从一个对象外部来给对象添加功能。通常给对象添加功能，要么直接修改对象添加相应的功能，要么派生对应的子类来扩展，或是使用对象组合的方式。显然，直接修改对应的类这种方式并不可取。在面向对象设计中，而我们应该尽量使用对象组合，而不是对象继承来扩展和复用功能。装饰器模式就是基于对象组合的方式，可以很灵活的给对象添加所需要的功能。装饰器模式的本质就是动">
+<meta property="og:image" content="http://iliubang.github.io/img/2017020904.jpg">
+<meta property="og:updated_time" content="2017-02-09T15:39:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="装饰器模式">
+<meta name="twitter:description" content="装饰器模式概述装饰器模式能够实现动态的为对象添加功能，是从一个对象外部来给对象添加功能。通常给对象添加功能，要么直接修改对象添加相应的功能，要么派生对应的子类来扩展，或是使用对象组合的方式。显然，直接修改对应的类这种方式并不可取。在面向对象设计中，而我们应该尽量使用对象组合，而不是对象继承来扩展和复用功能。装饰器模式就是基于对象组合的方式，可以很灵活的给对象添加所需要的功能。装饰器模式的本质就是动">
+<meta name="twitter:image" content="http://iliubang.github.io/img/2017020904.jpg">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.2.x" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    search: {
+      enable: true,
+      path: "/search.xml",
+    },
+    navbar: {
+      enable: true
+    },
+    fancybox: {
+      enable: true
+    },
+    toc: {
+      enable: true
+    },
+  };
+</script>
+
+
+
+  
+
+
+
+    <title> 装饰器模式 · BangLau </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">BangLau</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              Categories
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              Tags
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              About
+            
+          </a>
+        </li>
+      
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">BangLau</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      <a class="mobile-menu-item" href="/">
+        
+        
+          Home
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/archives/">
+        
+        
+          Archives
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/categories">
+        
+        
+          Categories
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/tags">
+        
+        
+          Tags
+        
+      </a>
+    
+      <a class="mobile-menu-item" href="/about">
+        
+        
+          About
+        
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          装饰器模式
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          Feb 9, 2017
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#装饰器模式概述"><span class="toc-text">装饰器模式概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模式结构说明"><span class="toc-text">模式结构说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码示例"><span class="toc-text">代码示例</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <h1 id="装饰器模式概述"><a href="#装饰器模式概述" class="headerlink" title="装饰器模式概述"></a>装饰器模式概述</h1><p>装饰器模式能够实现动态的为对象添加功能，是从一个对象外部来给对象添加功能。通常给对象添加功能，要么直接修改对象添加相应的功能，要么派生对应的子类来扩展，或是使用对象组合的方式。显然，直接修改对应的类这种方式并不可取。在面向对象设计中，而我们应该尽量使用对象组合，而不是对象继承来扩展和复用功能。装饰器模式就是基于对象组合的方式，可以很灵活的给对象添加所需要的功能。装饰器模式的本质就是动态组合。动态是手段，组合才是目的。总之，装饰器模式是通过把复杂的功能简单化，分散化，然后再运行起见，根据需要来动态组合的这样一个模式。<br><a id="more"></a></p>
+<h1 id="模式结构说明"><a href="#模式结构说明" class="headerlink" title="模式结构说明"></a>模式结构说明</h1><p>装饰器模式的结构如下图:<br><img src="/img/2017020904.jpg" alt="装饰器模式类图"></p>
+<p><code>Component</code>：组件对象的接口，可以给这些对象动态添加职责；<br><code>ConcreteComponent</code>：具体的组件对象实现了组件接口。该对象通常就是被装饰器装饰的原始对象，可以给这个对象添加职责；<br><code>Decorator</code>：所有装饰器的基类，需要定义一个与组件接口一致的接口（主要是为了实现装饰器的功能的复用，即具体的装饰器<code>A</code>可以装饰另外一个具体的装饰器<code>B</code>，因为装饰器类也是一个<code>Component</code>），并持有一个<code>Component</code>对象，改对象其实就是被装饰的对象。如果不继承组件接口类，则只能为某个组件添加单一的功能，即装饰器对象不能在装饰其他的装饰器对象。<br><code>ConcreteDecorator</code>：具体的装饰器类，实现具体要向被装饰对象添加的功能。用来装饰具体的组件对象或者另外一个具体的装饰器对象。</p>
+<h1 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h1><p>(1) 组件对象的接口，可以给这些对象动态添加职责</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Component</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">operation</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>(2) 具体实现组件对象接口的对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operation</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//具体操作</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>(3) 装饰器接口，维持一个指向组件对象的接口对象，并定义一个与组件接口一致的接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Decorator</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">    <span class="keyword">protected</span> Component component;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Decorator</span><span class="params">(Component component)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.component = component;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operation</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//妆发请求给组件对象，可以在转发前后执行一些附加动作</span></div><div class="line">        component.operation();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>(4) 装饰器的具体实现对象，向组件对象添加职责，<code>operationFirst()</code>,<code>operationLast()</code>为前后需要添加的功能。具体的装饰器类<code>ConcreteDecoratorB</code>代码相似，不再给出。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteDecoratorA</span> <span class="keyword">extends</span> <span class="title">Decorator</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ConcreteDecoratorA</span><span class="params">(Component component)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(component);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">operationFirst</span><span class="params">()</span> </span>&#123;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">operationLast</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operation</span><span class="params">()</span> </span>&#123;</div><div class="line">        operationFirst();</div><div class="line">        <span class="keyword">super</span>.operation();</div><div class="line">        operationLast();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>(5) 客户端使用装饰器的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">//创建需要被装饰器装饰的原始对象</span></div><div class="line">        Component c1 = <span class="keyword">new</span> ConcreteComponent();</div><div class="line">        <span class="comment">//给对象透明的增加功能A并调用</span></div><div class="line">        Decorator decoratorA = <span class="keyword">new</span> ConcreteDecoratorA(c1);</div><div class="line">        decoratorA.operation();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/image/reward/wechat.png" title="wechat">
+        </label>
+      
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/design-patterns/">design patterns</a>
+          
+            <a href="/tags/decorator/">decorator</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/02/13/代理模式/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">代理模式</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/02/09/适配器模式/">
+        <span class="next-text nav-default">适配器模式</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:it.liubang@gmail.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/iliubang" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">刘邦</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://iliubang.github.io/2017/02/09/装饰器模式/';
+        this.page.identifier = '2017/02/09/装饰器模式/';
+        this.page.title = '装饰器模式';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//true.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.2.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.2.x"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+  </body>
+</html>
