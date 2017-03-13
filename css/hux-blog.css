@@ -427,10 +427,10 @@ pre code {
   color: white;
   height: 56px;
   line-height: 25px;
-  animation: logo 2s cubic-bezier(0.47, 0, 0.73, 0.71) 0s infinite;
-  -webkit-animation: logo 2s cubic-bezier(0.47, 0, 0.73, 0.71) 0s infinite;
-  -moz-animation: logo 2s cubic-bezier(0.47, 0, 0.73, 0.71) 0s infinite;
-  -o-animation: logo 2s cubic-bezier(0.47, 0, 0.73, 0.71) 0s infinite;
+  /*animation: logo 2s cubic-bezier(0.47, 0, 0.73, 0.71) 0s infinite;*/
+  /*-webkit-animation: logo 2s cubic-bezier(0.47, 0, 0.73, 0.71) 0s infinite;*/
+  /*-moz-animation: logo 2s cubic-bezier(0.47, 0, 0.73, 0.71) 0s infinite;*/
+  /*-o-animation: logo 2s cubic-bezier(0.47, 0, 0.73, 0.71) 0s infinite;*/
 }
 .navbar-custom .navbar-brand:hover {
   color: rgba(255, 255, 255, 0.8);
