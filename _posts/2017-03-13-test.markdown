@@ -1,0 +1,20 @@
+---
+layout: post
+title: test
+subtitle: this is test article
+author: 刘邦
+weather: sunny
+catalog: true
+tags: php
+use_math: true
+---
+
+# this is test article
+---
+测试一下
+
+$$ x^{y^z}=(1+{\rm e}^x)^{-2xy^w} $$
+
+$\lambda$
+
+## 二级标题
