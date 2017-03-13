@@ -228,21 +228,19 @@
 </script>
 {% endif %}
 
-
 <!-- Baidu Tongji -->
 {% if site.ba_track_id %}
 <script>
     // dynamic User by Hux
     var _baId = '{{ site.ba_track_id }}';
-
     // Originial
     var _hmt = _hmt || [];
-    (function() {
+    (function(_baId) {
       var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      hm.src = "https://hm.baidu.com/hm.js?" + _baId;
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
-    })();
+    })(_baId);
 </script>
 {% endif %}
 
