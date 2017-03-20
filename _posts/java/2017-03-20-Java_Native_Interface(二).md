@@ -22,7 +22,8 @@ JNI中定义了一下类型来对应到相应的Java的数据类型:
 - `jclass`对应`java.lang.Class`
 - `jstring`对应`java.lang.String`
 - `jthrowable`对应`java.lang.Throwable`
-- `jarray`对应Java中的数组。Java中的数组由8种基本数据类型和一个`Object`类型派生二来，所以JNI中也存在`jintArray`,`jbyteArray`,`jshortArray`,`jlongArray`,`jfloatArray`,`jdoubleArray`,`jcharArray`,`jbooleanArray`和`jobjectArray`
+- `jarray`对应Java中的数组。Java中的数组由8种基本数据类型和一个`Object`类型派生二来，所以JNI中也存在`jintArray`,`jbyteArray`,`jshortArray`,`jlongArray`,`jfloatArray`,`jdoubleArray`,
+`jcharArray`,`jbooleanArray`和`jobjectArray`
 
 native函数接收和返回上述的JNI类型数据。如果native函数需要操作它自己的数据类型(如c语言中的int, char *)，那么就需要在JNI类型和本地类型之间做相应的转换。
 
