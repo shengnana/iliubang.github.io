@@ -94,36 +94,7 @@
     </div>
 </footer>
 
-<!--播放器-->
-<div id="QPlayer">
-    <div id="pContent">
-        <div id="player">
-            <span class="cover"></span>
-            <div class="ctrl">
-                <div class="musicTag marquee">
-                    <strong>Title</strong>
-                    <span> - </span>
-                    <span class="artist">Artist</span>
-                </div>
-                <div class="progresss">
-                    <div class="timer left">0:00</div>
-                    <div class="contr">
-                        <div class="rewind icon"></div>
-                        <div class="playback icon"></div>
-                        <div class="fastforward icon"></div>
-                    </div>
-                    <div class="right">
-                        <div class="liebiao icon"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ssBtn">
-            <div class="adf"></div>
-        </div>
-    </div>
-    <ol id="playlist"></ol>
-</div>
+<a href="#top" id="toTop"></a>
 
 <!-- jQuery -->
 <script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
@@ -307,18 +278,13 @@
     })();
 </script>
 
-<!--播放器-->
-<script src="/js/jquery.marquee.min.js"></script>
-<script>
-    var	playlist = [
-        {title:"The Rose",artist:"Westlife - (西城男孩)",mp3:"http://m2.music.126.net/yhMhpkWzrMoAYJwgMM_URg==/2096768674170155.mp3",cover:"http://p3.music.126.net/mU-cKIp8HvqVUSA0gzY2Dg==/903798558076025.jpg"},
-        {title:"my love",artist:"Westlife - (西城男孩)",mp3:"http://m2.music.126.net/4BfOVxsC3yuWjRobOsxzsw==/5692171697085687.mp3",cover:"http://p3.music.126.net/qdQsOtse6a2wEKwqlq61tQ==/2283685650943043.jpg"},
-        {title:"Nothing's Gonna Change My Love For You",artist:"Westlife - (西城男孩)",mp3:"http://m2.music.126.net/NKgmlNKLy5DfSgHYqRMmkw==/2018703348606011.mp3",cover:"http://p4.music.126.net/mU-cKIp8HvqVUSA0gzY2Dg==/903798558076025.jpg"}
-    ];
-    var isRotate = true;
-    var autoplay = false;
+<script src="{{ '/js/jquery.scrollToTop.min.js' | prepend: site.baseurl }}"></script>
+<script type="text/javascript">
+    $(function() {
+        $("#toTop").scrollToTop(1000);
+    });
 </script>
-<script src="/js/player.js"></script>
+
 <script>
     function bgChange(){
         var lis= $('.lib');
