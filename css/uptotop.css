@@ -5,9 +5,8 @@
 	right: 1.4rem;
 	width: 64px;
 	height: 64px;
-	background-image: url('/img/up.png');
-	background-repeat: no-repeat;
-	opacity: 0.4;
+    background: url('/img/up.png') no-repeat;
+    opacity: 0.4;
 	filter: alpha(opacity=40); /* For IE8 and earlier */
 }
 #toTop:hover {
