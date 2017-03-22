@@ -652,9 +652,9 @@ pre code {
 }
 .intro-header .post-heading .meta {
   font-family: 'Lora', 'Times New Roman', serif;
-  font-style: italic;
+  /*font-style: italic;*/
   font-weight: 300;
-  font-size: 18px;
+  font-size: 16px;
 }
 .intro-header .post-heading .meta a {
   color: white;
@@ -695,8 +695,8 @@ pre code {
 .post-preview > .post-meta {
   font-family: 'Lora', 'Times New Roman', serif;
   color: #808080;
-  font-size: 16px;
-  font-style: italic;
+  font-size: 14px;
+  /*font-style: italic;*/
   margin-top: 0;
 }
 .post-preview > .post-meta > a {
