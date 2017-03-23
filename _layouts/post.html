@@ -164,18 +164,7 @@ layout: default
       s.parentNode.insertBefore(o, s);
     }
 </script>
-
-<!--&lt;!&ndash; anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ &ndash;&gt;-->
-<!--<script>-->
-    <!--async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){-->
-        <!--anchors.options = {-->
-          <!--visible: 'always',-->
-          <!--placement: 'right',-->
-          <!--icon: ''-->
-        <!--};-->
-        <!--anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');-->
-    <!--})-->
-<!--</script>-->
+{% endif %}
 
 {% if site.disqus_username %}
 <script>
@@ -186,18 +175,5 @@ layout: default
         (d.head || d.body).appendChild(s);
     })();
 </script>
-{% endif %}
 
-
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
 {% endif %}

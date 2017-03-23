@@ -34,26 +34,14 @@ exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","READM
 # from PR#40, to support local preview for Jekyll 3.0
 gems: [jekyll-paginate]
 
+# Disqus settings
+disqus_username: liubang
+
 highlighter: rouge
 # highlighter: pygments
 markdown: kramdown
 kramdown:
   input: GFM
-  auto_ids: true
-  auto_id_prefix: 'id-'
-  syntax_highlighter: rouge
-
-
-
-# Disqus settings
-disqus_username: liubang
-
-# Duoshuo settings
-# duoshuo_username: iliubang
-# Share component is depend on Comment so we can NOT use share only.
-# duoshuo_share: true                     # set to false if you want to use Comment without Sharing
-
-
 
 
 # Analytics settings
