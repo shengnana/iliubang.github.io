@@ -156,7 +156,9 @@ PHP_FUNCTION(demo_callback)
 	}
 }
 ```
+
 以上代码所对应的php代码为：
+
 ```php
 <?php
 
@@ -178,7 +180,9 @@ demo_callback(function($msg) {
 });
 
 ```
+
 执行结果如下：
+
 ```bash
 ubuntu@vm-911:~/workspace/c/php-5.6.30/ext/demo$ php test.php 
 this is callback demo...
@@ -188,6 +192,7 @@ this is in callback function
 ```
 
 下面我再来用`call_user_function_ex`把回调重新实现一遍，写法基本一样：
+
 ```c
 PHP_FUNCTION(demo_callback_o)
 {
