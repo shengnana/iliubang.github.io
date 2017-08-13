@@ -776,7 +776,8 @@ pre code {
 }
 
 .intro-header .post-heading .meta {
-    font-family: 'Lora', 'Times New Roman', serif;
+    /*font-family: 'Lora', 'Times New Roman', serif;*/
+    font-family: Helvetica, arial, sans-serif;
     /*font-style: italic;*/
     font-weight: 300;
     font-size: 16px;
