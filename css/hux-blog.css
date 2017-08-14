@@ -827,7 +827,8 @@ pre code {
 }
 
 .post-preview > .post-meta {
-    font-family: 'Lora', 'Times New Roman', serif;
+    /*font-family: 'Lora', 'Times New Roman', serif; */
+    font-family: Helvetica, arial, sans-serif;
     color: #808080;
     font-size: 14px;
     /*font-style: italic;*/
