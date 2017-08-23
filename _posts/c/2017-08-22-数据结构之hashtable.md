@@ -239,8 +239,7 @@ void ht_destroy(hashtable_t *hashtable)
 
 ```php
 <?php
-
-$ht = new linger\Hashtable(655350);
+$ht = new linger\Hashtable(65535);
 
 $n = 10000;
 
@@ -272,7 +271,7 @@ echo "Array:" . (microtime(true) - $start), PHP_EOL;
 
 ```shell
 liubang@venux:~/workspace/c/php-hashtable-extension/tests$ php test2.php 
-HashTable:0.0099821090698242
-Array:0.0052108764648438
+HashTable:0.009289026260376
+Array:0.0061149597167969
 ```
 
