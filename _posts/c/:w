@@ -1,0 +1,44 @@
+---
+layout: post
+title: php扩展开发之自定义物件的存储
+subtitle: 重写 php hash table 扩展
+author: 刘邦
+weather: sunny
+catalog: true
+tags: [c,php]
+category: c
+use_math: true
+---
+
+## 如何创建一个对象
+
+我们首先来探讨下如何创建一个PHP对象。为此我们将会用到`object_and_properties_init`之类的一些宏。
+
+```c
+// 创建一个SomeClass类型的对象，并且把properties_hashtable中的变量作为其属性值
+zval *obj;
+MAKE_STD_ZVAL(obj);
+object_and_properties_init(obj, class_entry_of_SomeClass, properties_hashtable);
+
+// 创建一个没有属性的对象
+zval *obj;
+MAKE_STD_ZVAL(obj);
+object_init_ex(obj, class_entry_of_SomeClass);
+// = object_and_properties_init(obj, class_entry_of_SomeClass, NULL)
+
+// 创建一个stdClass的对象
+zval *obj;
+MAKE_STD_ZVAL(obj);
+object_init(obj);
+// = object_init_ex(obj, NULL) = object_and_properties_init(obj, NULL, NULL);
+```
+
+在上面的例子中，最后一种情况下，当你创建一个`stdClass`的对象后，通常将会给它添加属性。这时如果使用
+`zend_update_property`之类的函数，是不起作用的，取而代之的是`add_property`宏函数：
+
+```c
+add_property_long(obj, "id", id);
+add_property_string(obj, "name", name, 1); // 1 表示使用字符串的副本
+add_property_bool(obj, "isAdmin", is_admin);
+```
+
