@@ -15,7 +15,7 @@ use_math: true
 ArrayBuffer又叫二进制数组，是一个用来表示通用的，固定长度的二进制数据缓冲区。你不能直接操纵ArrayBuffer的内容，
 而是创建一个表示特定格式的buffer的类型化数组对象（也叫做数据视图对象）来对buffer的内容进行读写操作。
 
-ArrayBuffer我是从JavaScript中看到的，具体的用法和api可以参考[JavaScript标准库－－ArrayBuffer](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
+我最早了解ArrayBuffer是从JavaScript开始的，具体的用法和api可以参考[JavaScript标准库－－ArrayBuffer](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
 
 那么接下来，我们就给PHP扩展一个简单的ArrayBuffer，顺便巩固一下[php扩展开发之自定义对象的存储](https://iliubang.github.io/c/2017/08/24/php%E6%89%A9%E5%B1%95%E5%BC%80%E5%8F%91%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%AD%98%E5%82%A8/)。
 
