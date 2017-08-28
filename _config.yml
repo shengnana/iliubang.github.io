@@ -1,10 +1,10 @@
 # Site settings
-title: BangLau
-SEOTitle: 刘邦的博客 | BangLau
+title: LiuBang
+SEOTitle: 刘邦的博客 | 刘邦
 header-img: img/home-bg.jpg
 email: it.liubang@gmail.com
-description: "后端开发 | 这里是 @BangLau 刘邦 的个人博客，与你一起发现更大的世界。"
-keyword: "BangLua,刘邦,php,c,Java,go服务端开发,后端开发,"
+description: "后端开发 | 这里是 @LiuBang 刘邦 的个人博客，与你一起发现更大的世界。"
+keyword: "刘邦,Liubang,BangLua,php,c,Java,go服务端开发,后端开发,web开发"
 url: "https://iliubang.github.io"
 baseurl: ""
 
