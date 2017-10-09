@@ -233,7 +233,7 @@ void ht_destroy(hashtable_t *hashtable)
 至此我们就实现了一个简单的链式hash table。
 
 ### 给php扩展一个hash table
-接下来我们把这个hash table写成php扩展。由于太简单，这里就不再详细讲述实现过程，源代码可以访问[https://github.com/iliubang/php-hashtable-extension.git](https://github.com/iliubang/php-hashtable-extension.git)
+接下来我们把这个hash table写成php扩展。由于太简单，这里就不再详细讲述实现过程，源代码可以访问[https://github.com/iliubang/php_hashtable_extension.git](https://github.com/iliubang/php_hashtable_extension.git)
 
 写了个脚本测试下性能:
 

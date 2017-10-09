@@ -568,7 +568,7 @@ PHP_FUNCTION(linger_array_buffer_view_offset_get)
 ```
 
 对于剩下的`offsetExists`和`offsetUnset`这里就不再赘述了。而且这里只实现了数据的基本存取操作，并没有实现`Iterator`接口，不支持`foreach`操作，
-不过会在后续的文章中实现，今天的完整代码可到github上查看：[https://github.com/iliubang/php-ArrayBuffer.git](https://github.com/iliubang/php-ArrayBuffer.git)
+不过会在后续的文章中实现，今天的完整代码可到github上查看：[https://github.com/iliubang/php_ArrayBuffer_extension.git](https://github.com/iliubang/php_ArrayBuffer_extension.git)
 
 编译后写个测试脚本：
 
