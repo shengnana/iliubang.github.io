@@ -2,7 +2,7 @@
 layout: post
 title: php扩展开发之call_user_func原理和回调函数的实现
 author: 刘邦
-weather: sunny
+excerpt: "很多时候，我们需要通过函数名来调用函数，并传递参数，或者把匿名函数作为函数的参数传递，实现回调......"
 date: "2017-03-09 17:03:29"
 catalog: true
 tags: [c, php]

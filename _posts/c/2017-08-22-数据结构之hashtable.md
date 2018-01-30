@@ -3,7 +3,7 @@ layout: post
 title: 数据结构之hashtable
 subtitle: 给php再扩展一个hashtable
 author: 刘邦
-weather: sunny
+excerpt: "哈希表又叫散列表，是实现字典操作的中有效数据结构......"
 catalog: true
 tags: [c, algorithm]
 category: c

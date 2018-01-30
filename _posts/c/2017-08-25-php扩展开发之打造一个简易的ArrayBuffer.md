@@ -3,7 +3,7 @@ layout: post
 title: php扩展开发之打造一个简易的ArrayBuffer
 subtitle: 快乐源于实干
 author: 刘邦
-weather: sunny
+excerpt: "ArrayBuffer又叫二进制数组，是一个用来表示通用的，固定长度的二进制数据缓冲区"
 catalog: true
 tags: [c,php]
 category: c
