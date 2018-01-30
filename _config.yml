@@ -1,7 +1,7 @@
 # Site
-title:              blog
-bio:                'liubang blog'
-description:        "blog"
+title:              "liubang's blog"
+bio:				"liubang's blog"
+description:        "whether you are an antelope or a lion, you ought to dash forward without hesitation when the sun rise"
 reading_time:       true
 words_per_minute:   200
 logo:               'assets/img/logo.png'
@@ -39,7 +39,7 @@ disqus_shortname:   liubang
 #bing-verify:
 #email:
 twitter:            iliubang
-facebook:           刘邦
+facebook:           100011819431893
 github-url:         iliubang
 #stackoverflow:     123456/username   from a "http://stackoverflow.com/users/123456/username" link
 #linkedin:          username
