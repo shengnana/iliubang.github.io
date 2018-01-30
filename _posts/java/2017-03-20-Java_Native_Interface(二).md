@@ -1,10 +1,9 @@
 ---
 layout: post
 title: Java Native Interface（二）
-subtitle: JNI进阶
 author: 刘邦
 date: "2017-03-20 18:10:24"
-weather: sunny
+excerpt: "JNI进阶"
 catalog: true
 category: Java
 tags: [Java, JNI]

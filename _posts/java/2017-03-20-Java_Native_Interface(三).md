@@ -1,10 +1,9 @@
 ---
 layout: post
 title: Java Native Interface（三）
-subtitle: JNI练习
 author: 刘邦
 date: "2017-03-20 22:30:12"
-weather: sunny
+excerpt: "JNI练习"
 catalog: true
 category: Java
 tags: [Java, JNI]

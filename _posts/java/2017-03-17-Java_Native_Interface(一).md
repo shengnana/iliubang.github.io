@@ -1,9 +1,8 @@
 ---
 layout: post
 title: Java Native Interface（一）
-subtitle: 第一个JNI程序
 author: 刘邦
-weather: sunny
+excerpt: "第一个JNI程序"
 catalog: true
 category: Java
 tags: [Java, JNI]
