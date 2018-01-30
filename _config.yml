@@ -37,30 +37,17 @@ disqus_shortname:   liubang
   #ad-client:
   #ad-slot:
 #bing-verify:
-#email:
+email:              it.liubang@gmail.com
 twitter:            iliubang
 facebook:           100011819431893
 github-url:         iliubang
 #stackoverflow:     123456/username   from a "http://stackoverflow.com/users/123456/username" link
-#linkedin:          username
-#xing:              username
-#instagram:          username
-#lastfm:            username
-#tumblr:            username
 #medium:            '@username'
 #pinterest:         username
-#foursquare:        username
 #steam:              username
-#dribbble:          username
 #youtube:           username
 #youtube-channel:   channel
-#soundcloud:        username
 weibo:              AdolphLiu001
-#flickr:            username
-#codepen:           username
-#keybase:           username
-#xmpp:              username@server.com
-#hackernews:        username
 
 # Gems
 gems:

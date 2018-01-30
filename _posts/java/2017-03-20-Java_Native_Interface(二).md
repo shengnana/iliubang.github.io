@@ -8,7 +8,7 @@ weather: sunny
 catalog: true
 category: Java
 tags: [Java, JNI]
-use_math: false
+comments: true
 ---
 
 # JNI基础

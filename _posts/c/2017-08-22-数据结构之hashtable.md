@@ -7,7 +7,7 @@ weather: sunny
 catalog: true
 tags: [c, algorithm]
 category: c
-use_math: true
+comments: true
 ---
 
 ## hashtable

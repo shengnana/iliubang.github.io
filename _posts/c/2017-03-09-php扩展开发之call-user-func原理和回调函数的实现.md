@@ -7,7 +7,7 @@ date: "2017-03-09 17:03:29"
 catalog: true
 tags: [c, php]
 category: c
-use_math: true
+comments: true
 ---
 
 # 函数调用

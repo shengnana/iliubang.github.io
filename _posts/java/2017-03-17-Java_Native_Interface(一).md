@@ -7,7 +7,7 @@ weather: sunny
 catalog: true
 category: Java
 tags: [Java, JNI]
-use_math: true
+comments: true
 ---
 
 最近在整理学习笔记的时候发现了去年年中记录的JNI学习笔记，由于存放在了为知笔记中，而如今为知笔记已经不再免费，于是想到了将其重新整理一遍，一来可以巩固所学，二来能将其迁移到本地
