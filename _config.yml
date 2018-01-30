@@ -1,79 +1,76 @@
-# Site settings
-title: LiuBang
-SEOTitle: 刘邦的博客 | 刘邦
-header-img: img/home-bg.jpg
-email: it.liubang@gmail.com
-description: "后端开发 | 这里是 @LiuBang 刘邦 的个人博客，与你一起发现更大的世界。"
-keyword: "刘邦,Liubang,BangLua,php,c,Java,go服务端开发,后端开发,web开发"
-url: "https://iliubang.github.io"
-baseurl: ""
+# Site
+title:              blog
+bio:                'liubang blog'
+description:        "blog"
+reading_time:       true
+words_per_minute:   200
+logo:               'assets/img/logo.png'
+background:         'assets/img/placeholder-big.jpg'
+tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
+locale:             en_US
+url:                https://iliubang.github.io
 
+# Jekyll
+permalink:          /:title/
+markdown:           kramdown
+highlighter:        rouge
+kramdown:
+  auto_ids:         true
+  footnote_nr:      1
+  entity_output:    as_char
+  toc_levels:       1..6
+  enable_coderay:   false
+mathjax:            true
+sass:
+  sass_dir:         _sass
+  style:            compressed
 
+# Comments
+disqus_shortname:   taylantatli
 
-# SNS settings
-RSS: false
-weibo_username:     AdolphLiu001
-# zhihu_username:     liubang
-github_username:    iliubang
-twitter_username:  iliubang
-facebook_username:  100011819431893
-# linkedin_username:  firstname-lastname-idxxxx
-
-
-
-# Build settings
-# from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
-permalink: pretty
-paginate: 10
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
-# anchorjs: true
-
-
+# Social
+# if you don't have any of social below, comment the line.
+#google:
+  #plus:            #username
+  #analytics:
+  #verify:
+  #ad-client:
+  #ad-slot:
+#bing-verify:
+#email:
+twitter:            username
+facebook:           username
+github-url:         username
+#stackoverflow:     123456/username   from a "http://stackoverflow.com/users/123456/username" link
+#linkedin:          username
+#xing:              username
+instagram:          username
+#lastfm:            username
+#tumblr:            username
+#medium:            '@username'
+#pinterest:         username
+#foursquare:        username
+steam:              username
+#dribbble:          username
+#youtube:           username
+#youtube-channel:   channel
+#soundcloud:        username
+#weibo:             username
+#flickr:            username
+#codepen:           username
+#keybase:           username
+#xmpp:              username@server.com
+#hackernews:        username
 
 # Gems
-# from PR#40, to support local preview for Jekyll 3.0
-plugins: [jekyll-paginate]
+gems:
+  - jekyll-mentions
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-gist
 
-# Disqus settings
-disqus_username: liubang
+jekyll-mentions:
+    base_url: https://github.com
 
-highlighter: rouge
-# highlighter: pygments
-markdown: kramdown
-kramdown:
-  input: GFM
-
-
-# Analytics settings
-# Baidu Analytics
-ba_track_id: d9426b8b196111b4af56f34a6e45d32a
-# Google Analytics
-# ga_track_id: 'UA-80711026-1'            # Format: UA-xxxxxx-xx
-# ga_domain: auto
-
-
-
-# Sidebar settings
-sidebar: true
-sidebar-about-description: "whether you are an antelope or a lion,you ought to dash forward without hesitation when the sun rise"
-sidebar-avatar: /img/lb.jpg
-
-
-
-# Featured Tags
-featured-tags: true                     # whether or not using Feature-Tags
-featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
-
-
-
-# Friends
-friends: [
-    {
-          title: "liubang",
-          href: "https://iliubang.github.io/"
-    },
-    {
-          title: "李成龙",
-          href: "https://lichenglong.pw/"
-    }
-]
+# Exclude list
+exclude: [README.md, Gemfile, Gemfile.lock, node_modules, gulpfile.js, package.json, _site, src, vendor, CNAME, LICENSE, Rakefile]
