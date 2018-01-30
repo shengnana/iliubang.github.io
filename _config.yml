@@ -50,7 +50,7 @@ github-url:         iliubang
 weibo:              AdolphLiu001
 
 # Gems
-gems:
+plugins:
   - jekyll-mentions
   - jekyll-feed
   - jekyll-sitemap
