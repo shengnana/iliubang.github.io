@@ -103,7 +103,7 @@ body {
 .wrapper {
 	width: 75%;
 	max-width: 850px;
-	margin: 4rem auto;
+	margin: 4rem auto 4rem auto;
 	background: $white;
 	color: $color_tuatara;
 	padding: 2em;
@@ -116,7 +116,8 @@ body {
 	    box-shadow: none;
 	}
 }
-#disqus_thread {
+
+#lv-container {
 	width: 75%;
 	max-width: 850px;
 	margin: -3rem auto 4rem;

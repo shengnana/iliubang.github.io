@@ -10,6 +10,9 @@
 	@media #{$small} {
 		padding: 0 .5em;
 	}
+	p {
+		word-wrap: break-word;
+	}
 }
 
 // titles
