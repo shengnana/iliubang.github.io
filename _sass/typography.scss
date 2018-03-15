@@ -134,6 +134,16 @@ li .highlight pre {
 // table
 table {
 	width: 100%;
+	border: 2px solid #DDDDDB;
+    border-collapse: collapse;
+}
+
+table thead,
+table tr,
+table th,
+table td {
+    border: 1px solid $color_celeste;
+	padding: 5px;
 }
 
 // notice
