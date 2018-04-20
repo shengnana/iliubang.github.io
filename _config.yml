@@ -12,7 +12,7 @@ url:                https://iliubang.github.io
 
 # Jekyll
 # permalink:          /:title/
-permalink:          /:categories/:title.html
+permalink:          /:categories/:year/:month/:day/:title.html
 markdown:           kramdown
 highlighter:        rouge
 kramdown:
