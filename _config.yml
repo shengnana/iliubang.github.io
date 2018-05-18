@@ -8,7 +8,7 @@ logo:               'assets/img/lb.jpg'
 background:         'assets/img/placeholder-big.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
-url:                https://iliubang.github.io
+url:                https://iliubang.cn
 
 # Jekyll
 # permalink:          /:title/
@@ -42,12 +42,6 @@ email:              it.liubang@gmail.com
 twitter:            iliubang
 facebook:           100011819431893
 github-url:         iliubang
-#stackoverflow:     123456/username   from a "http://stackoverflow.com/users/123456/username" link
-#medium:            '@username'
-#pinterest:         username
-#steam:              username
-#youtube:           username
-#youtube-channel:   channel
 weibo:              AdolphLiu001
 
 # Gems
