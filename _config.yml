@@ -11,8 +11,8 @@ locale:             en_US
 url:                https://iliubang.cn
 
 # Jekyll
-# permalink:          /:title/
-permalink:          /:categories/:year/:month/:day/:title.html
+# permalink:          /:categories/:year/:month/:day/:title.html
+permalink:          /:categories/:year/:month/:day/:id.html
 markdown:           kramdown
 highlighter:        rouge
 kramdown:
