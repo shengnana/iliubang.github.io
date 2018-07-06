@@ -1,18 +1,15 @@
-<!-- 来必力City版安装代码 -->
 <section id="lv-container" class="animated fadeInUp" data-id="city" data-uid="MTAyMC8zNDE1MS8xMDY4OA==">
-	<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-	</script>
-<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+<div id="container"></div>
+<script>
+var gitment = new Gitment({
+  id: 'iliubang.cn',
+  owner: 'iliubang',
+  repo: 'iliubang.github.io',
+  oauth: {
+    client_id: '2827dae435248540c443',
+    client_secret: 'd556f9ba49065399d305d8fbc0511dfc63bd894a',
+  }
+});
+gitment.render('container');
+</script>
 </section>
-<!-- City版安装代码已完成 -->
