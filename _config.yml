@@ -11,8 +11,7 @@ locale:             en_US
 url:                https://iliubang.cn
 
 # Jekyll
-# permalink:          /:categories/:year/:month/:day/:title.html
-permalink:          /:categories/:year/:month/:day/:id.html
+permalink:          /:categories/:year/:month/:day/:title.html
 markdown:           kramdown
 highlighter:        rouge
 kramdown:
@@ -50,6 +49,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-gist
+  - liquid-md5
 
 jekyll-mentions:
     base_url: https://github.com
