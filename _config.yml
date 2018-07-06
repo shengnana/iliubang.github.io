@@ -28,6 +28,12 @@ sass:
 # Comments
 disqus_shortname:   liubang
 
+gitment:
+  owner: liubang
+  repo: iliubang.github.io
+  client_id: 2827dae435248540c443
+  client_secret: d556f9ba49065399d305d8fbc0511dfc63bd894a 
+
 # Social
 # if you don't have any of social below, comment the line.
 #google:

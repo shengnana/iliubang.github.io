@@ -1,16 +1,16 @@
-<section id="lv-container" class="animated fadeInUp" data-id="city" data-uid="MTAyMC8zNDE1MS8xMDY4OA==">
+<section id="lv-container" class="animated fadeInUp">
     <div id="gitmentContainer"></div>
 </section>
 <script>
 var pathname = md5(location.pathname);
 var gitment = new Gitment({
-  id: pathname,
-  owner: 'iliubang',
-  repo: 'iliubang.github.io',
-  oauth: {
-    client_id: '2827dae435248540c443',
-    client_secret: 'd556f9ba49065399d305d8fbc0511dfc63bd894a',
-  }
+    id: pathname,
+    owner: '{{ gitment.owner }}',
+    repo: '{{ gitment.repo }}',
+    oauth: {
+        client_id: '{{ gitment.client_id }}',
+        client_secret: '{{ gitment.client_secret }}',
+    }
 });
 gitment.render('gitmentContainer');
 </script>
