@@ -2,8 +2,9 @@
     <div id="gitmentContainer"></div>
 </section>
 <script>
+var pathname = md5(location.pathname);
 var gitment = new Gitment({
-  id: '{{ page.title|md5 }}',
+  id: pathname,
   owner: 'iliubang',
   repo: 'iliubang.github.io',
   oauth: {
