@@ -1,5 +1,4 @@
-#source "https://rubygems.org"
-source "https://gems.ruby-china.org"
+source "https://gems.ruby-china.com"
 
 gem "jekyll", "~> 3.8.3"
 gem "jekyll-sitemap"
