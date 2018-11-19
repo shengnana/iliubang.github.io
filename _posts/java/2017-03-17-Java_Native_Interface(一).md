@@ -13,11 +13,9 @@ comments: true
 
 # 1 简介
 
-有时候，使用native code(c/c++)来克服Java中的内存管理和性能的约束是很有必要的。Java支持native codes，被称作Java Native Interface(JNI)。
+有时候，使用native code(c/c++)来克服Java中的内存管理和性能的局限性是很有必要的。Java支持native codes，被称作Java Native Interface(JNI)。
 
-JNI非常难，毕竟它牵涉到了两种编程语言。
-
-假设聪明的你对Java和C/C++以及GCC编译器已经非常熟悉。那么下面就一起来一步步学习JNI吧。
+JNI非常难，毕竟它牵涉到了两种编程语言。假设聪明的你对Java和C/C++以及GCC编译器已经有所了解。那么下面就一起来一步步学习JNI吧。
 
 # 2 开始
 
