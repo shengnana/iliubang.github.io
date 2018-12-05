@@ -6,7 +6,7 @@ excerpt: "很多时候，我们需要通过函数名来调用函数，并传递�
 date: "2017-03-09 17:03:29"
 catalog: true
 tags: [c, php]
-category: c
+category: php
 comments: true
 ---
 

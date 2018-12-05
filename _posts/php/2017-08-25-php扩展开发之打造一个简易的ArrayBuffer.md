@@ -6,7 +6,7 @@ author: 刘邦
 excerpt: "ArrayBuffer又叫二进制数组，是一个用来表示通用的，固定长度的二进制数据缓冲区"
 catalog: true
 tags: [c,php]
-category: c
+category: php
 comments: true
 ---
 
