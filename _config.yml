@@ -31,8 +31,8 @@ disqus_shortname:   liubang
 gitment:
   owner: iliubang
   repo: iliubang.github.io
-  client_id: 2827dae435248540c443
-  client_secret: d556f9ba49065399d305d8fbc0511dfc63bd894a 
+	client_id: 9762ad41a65db18f170b
+	client_secret: be4ea1abba93e15b0ac0ba5c3e9a3e246adc7df7
 
 # Social
 # if you don't have any of social below, comment the line.
