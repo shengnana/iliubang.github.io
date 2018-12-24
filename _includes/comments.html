@@ -1,16 +1,18 @@
 <section id="lv-container" class="animated fadeInUp">
-    <div id="gitmentContainer"></div>
+    <div id="gitalk-container"></div>
 </section>
+
 <script>
 var pathname = md5(location.pathname);
-var gitment = new Gitment({
-    id: pathname,
-    owner: '{{ site.gitment.owner }}',
+var gitalk = new Gitalk({
+    clientID: '{{ site.gitment.client_id }}',
+    clientSecret: '{{ site.gitment.client_secret }}',
     repo: '{{ site.gitment.repo }}',
-    oauth: {
-        client_id: '{{ site.gitment.client_id }}',
-        client_secret: '{{ site.gitment.client_secret }}',
-    }
+    owner: '{{ site.gitment.owner }}',
+    admin: ['{{ site.gitment.owner }}'],
+    id: pathname,      
+    distractionFreeMode: false  
 });
-gitment.render('gitmentContainer');
+
+gitalk.render('gitalk-container');
 </script>
