@@ -29,8 +29,8 @@ sass:
 disqus_shortname:   liubang
 
 gitment:
-  owner: iliubang
-  repo: iliubang.github.io
+	owner: iliubang
+	repo: iliubang.github.io
 	client_id: 9762ad41a65db18f170b
 	client_secret: be4ea1abba93e15b0ac0ba5c3e9a3e246adc7df7
 
